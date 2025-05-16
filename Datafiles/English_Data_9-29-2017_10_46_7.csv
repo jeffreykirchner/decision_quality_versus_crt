@@ -1,5 +1,0 @@
-Period,Player,Group,Observer,GroupType,MarketPaid,Bid,BidIndex,Won,Value,PricePaid,Profit,TotalCash
-1,1,1,-1,large,True,50,1,Yes,13.33,1.5,11.83,21.83,
-1,1,1,-1,small,False,4,2,No,13.33,,0,21.83,
-1,2,1,-1,large,True,1.5,2,No,25.3,,0,10,
-1,2,1,-1,small,False,50,1,Yes,25.3,4,21.3,10,
