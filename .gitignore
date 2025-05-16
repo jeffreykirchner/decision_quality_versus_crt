@@ -97,6 +97,7 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+*.exe
 
 # Chutzpah Test files
 _Chutzpah*
@@ -361,3 +362,14 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+#sign tool
+microsoft.trusted.signing.client.1.0.76/
+
+#azure open ai
+azure.ini
+
+#expeirment files
+Parameters/
+Logs/
+Datafiles/
