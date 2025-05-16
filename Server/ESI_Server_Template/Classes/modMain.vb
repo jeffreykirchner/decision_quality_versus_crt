@@ -20,6 +20,7 @@ Module modMain
     Public showInstructions As Boolean
     Public testMode As Boolean
     Public filename As String                        'location of data file
+    Public enableChatBot As Boolean
 
     Public currentPeriod As Integer
     Public subLotteryPeriod As Integer
@@ -130,6 +131,7 @@ Module modMain
             testMode = getINI(sfile, "gameSettings", "testMode")
             quizQuestionValue = getINI(sfile, "gameSettings", "quizQuestionValue")
             practicePeriods = getINI(sfile, "gameSettings", "practicePeriods")
+            enableChatBot = getINI(sfile, "gameSettings", "enableChatBot")
 
             lotteryTicketCount = getINI(sfile, "gameSettings", "lotteryTicketCount")
             lotteryPeriodLength = getINI(sfile, "gameSettings", "lotteryPeriodLength")

@@ -28,6 +28,7 @@
             writeINI(sfile, "gameSettings", "showInstructions", cbShowInstructions.Checked)
             writeINI(sfile, "gameSettings", "testMode", cbTestMode.Checked)
             writeINI(sfile, "gameSettings", "englishPVSecondPriceShowProfit", cbShowEnglishPVSecondPriceProfit.Checked)
+            writeINI(sfile, "gameSettings", "enableChatBot", cbEnableChatBot.Checked)
 
             writeINI(sfile, "gameSettings", "quizQuestionValue", txtQuizQuestionValue.Text)
             writeINI(sfile, "gameSettings", "practicePeriods", txtPracticePeriods.Text)
@@ -93,6 +94,7 @@
             cbShowInstructions.Checked = getINI(sfile, "gameSettings", "showInstructions")
             cbTestMode.Checked = getINI(sfile, "gameSettings", "testMode")
             cbShowEnglishPVSecondPriceProfit.Checked = getINI(sfile, "gameSettings", "englishPVSecondPriceShowProfit")
+            cbEnableChatBot.Checked = getINI(sfile, "gameSettings", "enableChatBot")
 
             txtQuizQuestionValue.Text = getINI(sfile, "gameSettings", "quizQuestionValue")
             txtPracticePeriods.Text = getINI(sfile, "gameSettings", "practicePeriods")

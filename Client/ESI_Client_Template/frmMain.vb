@@ -25,7 +25,7 @@
 
             AC.sendMessage("COMPUTER_NAME", My.Computer.Name)
 
-            frmChatGPT.Show()
+            'frmChatGPT.Show()
 
         Catch ex As Exception
             appEventLog_Write("error :", ex)

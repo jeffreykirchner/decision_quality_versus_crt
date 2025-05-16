@@ -64,6 +64,7 @@ Partial Class frmMain
         Me.ControlBox = False
         Me.Controls.Add(Me.txtMain)
         Me.Controls.Add(Me.lbl1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.MaximizeBox = False

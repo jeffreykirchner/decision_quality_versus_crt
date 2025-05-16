@@ -81,6 +81,7 @@ Partial Class frmSetup1
         Me.cbShowEnglishPVSecondPriceProfit = New System.Windows.Forms.CheckBox()
         Me.txtLotteryPeriodLength = New System.Windows.Forms.TextBox()
         Me.Label26 = New System.Windows.Forms.Label()
+        Me.cbEnableChatBot = New System.Windows.Forms.CheckBox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
@@ -88,7 +89,7 @@ Partial Class frmSetup1
         'cmdSaveAndClose
         '
         Me.cmdSaveAndClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdSaveAndClose.Location = New System.Drawing.Point(635, 362)
+        Me.cmdSaveAndClose.Location = New System.Drawing.Point(635, 394)
         Me.cmdSaveAndClose.Name = "cmdSaveAndClose"
         Me.cmdSaveAndClose.Size = New System.Drawing.Size(276, 31)
         Me.cmdSaveAndClose.TabIndex = 0
@@ -252,7 +253,7 @@ Partial Class frmSetup1
         '
         Me.cbShowInstructions.AutoSize = True
         Me.cbShowInstructions.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbShowInstructions.Location = New System.Drawing.Point(796, 330)
+        Me.cbShowInstructions.Location = New System.Drawing.Point(813, 363)
         Me.cbShowInstructions.Name = "cbShowInstructions"
         Me.cbShowInstructions.Size = New System.Drawing.Size(172, 24)
         Me.cbShowInstructions.TabIndex = 17
@@ -282,7 +283,7 @@ Partial Class frmSetup1
         '
         Me.cbTestMode.AutoSize = True
         Me.cbTestMode.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbTestMode.Location = New System.Drawing.Point(622, 330)
+        Me.cbTestMode.Location = New System.Drawing.Point(622, 363)
         Me.cbTestMode.Name = "cbTestMode"
         Me.cbTestMode.Size = New System.Drawing.Size(112, 24)
         Me.cbTestMode.TabIndex = 20
@@ -652,12 +653,24 @@ Partial Class frmSetup1
         Me.Label26.Text = "Lottery Period Length"
         Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'cbEnableChatBot
+        '
+        Me.cbEnableChatBot.AutoSize = True
+        Me.cbEnableChatBot.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbEnableChatBot.Location = New System.Drawing.Point(622, 333)
+        Me.cbEnableChatBot.Name = "cbEnableChatBot"
+        Me.cbEnableChatBot.Size = New System.Drawing.Size(160, 24)
+        Me.cbEnableChatBot.TabIndex = 58
+        Me.cbEnableChatBot.Text = "Enable Chat Bot"
+        Me.cbEnableChatBot.UseVisualStyleBackColor = True
+        '
         'frmSetup1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(999, 440)
         Me.ControlBox = False
+        Me.Controls.Add(Me.cbEnableChatBot)
         Me.Controls.Add(Me.txtLotteryPeriodLength)
         Me.Controls.Add(Me.Label26)
         Me.Controls.Add(Me.cbShowEnglishPVSecondPriceProfit)
@@ -783,4 +796,5 @@ Partial Class frmSetup1
     Friend WithEvents cbShowEnglishPVSecondPriceProfit As CheckBox
     Friend WithEvents txtLotteryPeriodLength As TextBox
     Friend WithEvents Label26 As Label
+    Friend WithEvents cbEnableChatBot As CheckBox
 End Class

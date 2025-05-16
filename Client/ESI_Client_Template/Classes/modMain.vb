@@ -29,6 +29,7 @@ Module modMain
     Public currentPeriod As Integer
     Public quizQuestionValue As Double
     Public practicePeriods As Double
+    Public enableChatBot As Boolean
 
     Public myGroup As Integer
 
@@ -200,6 +201,9 @@ Module modMain
                 nextToken += 1
 
                 practicePeriods = msgtokens(nextToken)
+                nextToken += 1
+
+                enableChatBot = msgtokens(nextToken)
                 nextToken += 1
 
                 'lotteries
@@ -1116,6 +1120,8 @@ Module modMain
                 .lblEarnings.Text = "Your Earnings Are: " & FormatCurrency(msgtokens(nextToken), -1, TriState.UseDefault, TriState.False)
                 nextToken += 1
 
+                frmChatGPT.Hide()
+
             End With
         Catch ex As Exception
             appEventLog_Write("error :", ex)
@@ -1349,6 +1355,11 @@ Module modMain
                 End With
             End If
 
+            If enableChatBot Then
+                frmChatGPT.Show()
+                frmChatGPT.Location = New Point(windowX, windowY)
+            End If
+
         Catch ex As Exception
             appEventLog_Write("Error :", ex)
         End Try
@@ -1444,6 +1455,11 @@ Module modMain
                 frmInstructions.Show()
 
                 My.Forms.frmInstructions.Location = New Point(instructionX, instructionY)
+            Else
+                If enableChatBot Then
+                    frmChatGPT.Show()
+                    frmChatGPT.Location = New Point(windowX, windowY)
+                End If
             End If
         Catch ex As Exception
             appEventLog_Write("Error :", ex)
