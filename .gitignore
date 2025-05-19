@@ -373,3 +373,5 @@ azure.ini
 Parameters/
 Logs/
 Datafiles/
+/sign_server.bat
+/sign_client.bat
