@@ -815,4 +815,34 @@ Public Class player
             appEventLog_Write("error endEarly:", ex)
         End Try
     End Sub
+
+    Public Sub takeChatBotMessage(str As String)
+        Try
+            With frmServer
+                Dim msgtokens() As String = str.Split(";")
+                Dim nextToken As Integer = 0
+
+                'take prompt
+                Dim prompt As String = msgtokens(nextToken)
+                nextToken += 1
+
+                'take response
+                Dim response As String = msgtokens(nextToken)
+                nextToken += 1
+
+                Dim outstr As String = ""
+
+                outstr = currentPeriod & ","
+                outstr &= phaseList(currentPeriod) & ","
+                outstr &= inumber & ","
+                outstr &= myGroup(currentPeriod) & ","
+                outstr &= prompt & ","
+                outstr &= response & ","
+
+                chatBotDf.WriteLine(outstr)
+            End With
+        Catch ex As Exception
+            appEventLog_Write("Error :", ex)
+        End Try
+    End Sub
 End Class

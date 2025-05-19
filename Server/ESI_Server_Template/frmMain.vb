@@ -177,7 +177,8 @@ Public Class frmMain
             If lotteryDf IsNot Nothing Then lotteryDf.Close()
             If secondPriceDf IsNot Nothing Then secondPriceDf.Close()
             If englishDf IsNot Nothing Then englishDf.Close()
-            If english2Df IsNot Nothing Then englishDf.Close()
+            If english2Df IsNot Nothing Then english2Df.Close()
+            If chatBotDf IsNot Nothing Then chatBotDf.Close()
 
             cmdBegin.Enabled = True
             cmdLoad.Enabled = True
@@ -283,6 +284,15 @@ Public Class frmMain
 
                 english2Df.WriteLine(str)
                 english2Df.AutoFlush = True
+            End If
+
+            If enableChatBot Then
+                filename = "ChatBot_Data_" & tempTime & ".csv"
+                filename = Application.StartupPath & "\datafiles\" & filename
+                chatBotDf = File.CreateText(filename)
+                str = "Period,Treatment,Player,Group,Prompt,Response"
+                chatBotDf.WriteLine(str)
+                chatBotDf.AutoFlush = True
             End If
 
             'intialize parameters

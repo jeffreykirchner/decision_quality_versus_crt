@@ -52,8 +52,6 @@ Public Class frmChatGPT
             Dim v = JsonConvert.SerializeObject(completion.Content(0))
 
             Dim jsonResult As Dictionary(Of String, String) = JsonConvert.DeserializeObject(Of Dictionary(Of String, String))(v)
-            'Dim dataArray = CType(jsonResult("data"), Newtonsoft.Json.Linq.JArray)
-            'Dim firstItem = dataArray(0)
             content = jsonResult("Text")
 
             messages.Add(New AssistantChatMessage(content))
@@ -68,6 +66,14 @@ Public Class frmChatGPT
 
         rtbResponse.AppendText(vbCrLf & vbCrLf)
 
+        'send message to server
+        Dim str As String = ""
+        str &= textPrompt.Text & ";"
+        str &= content & ";"
+
+        frmClient.AC.sendMessage("07", str)
+
+        'clear text box
         textPrompt.Clear()
         textPrompt.Enabled = True
         textPrompt.Focus()

@@ -95,6 +95,7 @@ Module modMain
     Public lotteryDf As StreamWriter                 'lottery data file
     Public englishDf As StreamWriter                 'lottery data file
     Public english2Df As StreamWriter                'lottery data file
+    Public chatBotDf As StreamWriter                 'chat bot data file
 
     Public checkin As Integer = 0
 
@@ -198,6 +199,7 @@ Module modMain
                     Case "06"
                         takeEnglishPVBid(index, message)
                     Case "07"
+                        takeChatBotMessage(index, message)
                     Case "08"
                     Case "09"
                     Case "10"
@@ -560,6 +562,9 @@ Module modMain
                         englishDf.Close()
                     End If
 
+                    If english2Df IsNot Nothing Then english2Df.Close()
+                    If chatBotDf IsNot Nothing Then chatBotDf.Close()
+
                 End If
 
             End With
@@ -568,18 +573,20 @@ Module modMain
         End Try
     End Sub
 
-    Public Function checkForLastSubperiod()
-        Try
-            For i As Integer = currentPeriod + 1 To numberOfPeriods
-                If phaseList(i) = phaseList(currentPeriod) Then Return False
-            Next
+    'Public Function checkForLastSubperiod()
+    '    Try
+    '        For i As Integer = currentPeriod + 1 To numberOfPeriods
+    '            For i As Integer = currentPeriod + 1 To numberOfPeriods
+    '                If phaseList(i) = phaseList(currentPeriod) Then Return False
+    '            Next
 
-            Return True
-        Catch ex As Exception
-            appEventLog_Write("error :", ex)
-            Return False
-        End Try
-    End Function
+    '            Return True
+    '        Next
+    '    Catch ex As Exception
+    '        appEventLog_Write("error :", ex)
+    '        Return False
+    '    End Try
+    'End Function
 
     Public Sub takeReadyToGoOn(index As Integer, str As String)
         Try
@@ -1310,4 +1317,13 @@ Module modMain
         End Try
     End Function
 
+    Public Sub takeChatBotMessage(index As Integer, str As String)
+        Try
+            With frmServer
+                playerlist(index).takeChatBotMessage(str)
+            End With
+        Catch ex As Exception
+            appEventLog_Write("Error :", ex)
+        End Try
+    End Sub
 End Module
