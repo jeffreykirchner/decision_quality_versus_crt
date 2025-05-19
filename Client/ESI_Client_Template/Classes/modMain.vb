@@ -513,6 +513,8 @@ Module modMain
                 .txtTimeRemaining.Visible = True
                 .lblTimeRemaining.Visible = True
 
+                .Location = New Point(windowX, windowY)
+
                 If Not showInstructions Then .Timer3.Enabled = True
             End With
         Catch ex As Exception
@@ -684,6 +686,8 @@ Module modMain
                     .lblMyBidLeft.Text = "- " & .lblMyBidLeft.Text
                     .lblMyBidRight.Text = "- " & .lblMyBidRight.Text
                 End If
+
+                .Location = New Point(windowX, windowY)
             End With
         Catch ex As Exception
             appEventLog_Write("error :", ex)
@@ -765,6 +769,7 @@ Module modMain
 
                 .lblKeyValue.Visible = False
                 .pnlKeyValue.Visible = False
+                .Location = New Point(windowX, windowY)
             End With
         Catch ex As Exception
             appEventLog_Write("error :", ex)
@@ -1374,11 +1379,25 @@ Module modMain
 
                 My.Forms.frmSecondPrice.Hide()
                 My.Forms.frmEnglish.Hide()
+
+                If enableChatBot And Not showInstructions Then
+                    frmChatGPT.Show()
+                    frmChatGPT.Location = New Point(10, My.Forms.frmLottery.Height + 20)
+                    frmChatGPT.Width = My.Forms.frmSecondPrice.Width
+                    frmChatGPT.Height = My.Computer.Screen.Bounds.Height - 20 - My.Forms.frmLottery.Height
+                End If
             ElseIf currentPhase = "2nd Price" Or currentPhase = "English Auction" Then
                 takeSecondPriceStart(msgtokens, nextToken)
 
                 My.Forms.frmLottery.Hide()
                 My.Forms.frmEnglish.Hide()
+
+                If enableChatBot And Not showInstructions Then
+                    frmChatGPT.Show()
+                    frmChatGPT.Location = New Point(10, My.Forms.frmSecondPrice.Height + 20)
+                    frmChatGPT.Width = My.Forms.frmSecondPrice.Width
+                    frmChatGPT.Height = My.Computer.Screen.Bounds.Height - 20 - My.Forms.frmSecondPrice.Height
+                End If
             Else
                 takeEnglishStart(msgtokens, nextToken)
 
@@ -1407,6 +1426,15 @@ Module modMain
 
                 My.Forms.frmSecondPrice.Hide()
                 My.Forms.frmLottery.Hide()
+
+                If enableChatBot And Not showInstructions Then
+                    frmChatGPT.Show()
+                    frmChatGPT.Width = My.Computer.Screen.Bounds.Width - My.Forms.frmEnglish.Width - 20
+
+                    frmChatGPT.Location = New Point(My.Computer.Screen.Bounds.Width - frmChatGPT.Width - 10, 10)
+                    frmChatGPT.Height = My.Forms.frmEnglish.Height
+
+                End If
             End If
 
             If showInstructions Then
@@ -1455,11 +1483,6 @@ Module modMain
                 frmInstructions.Show()
 
                 My.Forms.frmInstructions.Location = New Point(instructionX, instructionY)
-            Else
-                If enableChatBot Then
-                    frmChatGPT.Show()
-                    frmChatGPT.Location = New Point(windowX, windowY)
-                End If
             End If
         Catch ex As Exception
             appEventLog_Write("Error :", ex)

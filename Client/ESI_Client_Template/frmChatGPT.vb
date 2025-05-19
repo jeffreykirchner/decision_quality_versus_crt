@@ -87,4 +87,9 @@ Public Class frmChatGPT
         End If
     End Sub
 
+    Private Sub textPrompt_Click(sender As Object, e As EventArgs) Handles textPrompt.Click
+        If textPrompt.Text = "Type your question here." Then
+            textPrompt.Clear()
+        End If
+    End Sub
 End Class
