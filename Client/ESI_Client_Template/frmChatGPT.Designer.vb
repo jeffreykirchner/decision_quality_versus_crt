@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmChatGPT
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,12 +20,13 @@ Partial Class frmChatGPT
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmChatGPT))
         Me.cmdSend = New System.Windows.Forms.Button()
         Me.textPrompt = New System.Windows.Forms.TextBox()
         Me.rtbResponse = New System.Windows.Forms.RichTextBox()
+        Me.cmdReset = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
@@ -35,9 +36,9 @@ Partial Class frmChatGPT
         Me.cmdSend.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdSend.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdSend.Location = New System.Drawing.Point(783, 3)
+        Me.cmdSend.Location = New System.Drawing.Point(753, 3)
         Me.cmdSend.Name = "cmdSend"
-        Me.cmdSend.Size = New System.Drawing.Size(169, 28)
+        Me.cmdSend.Size = New System.Drawing.Size(97, 28)
         Me.cmdSend.TabIndex = 0
         Me.cmdSend.Text = "Send"
         Me.cmdSend.UseVisualStyleBackColor = True
@@ -51,7 +52,7 @@ Partial Class frmChatGPT
         Me.textPrompt.Location = New System.Drawing.Point(3, 3)
         Me.textPrompt.MaxLength = 200
         Me.textPrompt.Name = "textPrompt"
-        Me.textPrompt.Size = New System.Drawing.Size(774, 26)
+        Me.textPrompt.Size = New System.Drawing.Size(744, 26)
         Me.textPrompt.TabIndex = 2
         Me.textPrompt.Text = "Type your question here."
         Me.textPrompt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -71,18 +72,32 @@ Partial Class frmChatGPT
         Me.rtbResponse.TabIndex = 3
         Me.rtbResponse.Text = ""
         '
+        'cmdReset
+        '
+        Me.cmdReset.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdReset.Location = New System.Drawing.Point(856, 3)
+        Me.cmdReset.Name = "cmdReset"
+        Me.cmdReset.Size = New System.Drawing.Size(96, 28)
+        Me.cmdReset.TabIndex = 5
+        Me.cmdReset.Text = "Reset"
+        Me.cmdReset.UseVisualStyleBackColor = True
+        '
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel1.ColumnCount = 2
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.74757!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.25243!))
+        Me.TableLayoutPanel1.ColumnCount = 3
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.92497!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.07503!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.cmdSend, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.textPrompt, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.cmdReset, 2, 0)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(12, 434)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(955, 37)
@@ -92,7 +107,7 @@ Partial Class frmChatGPT
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(979, 483)
+        Me.ClientSize = New System.Drawing.Size(973, 479)
         Me.ControlBox = False
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.rtbResponse)
@@ -109,5 +124,6 @@ Partial Class frmChatGPT
     Friend WithEvents cmdSend As Button
     Friend WithEvents textPrompt As TextBox
     Friend WithEvents rtbResponse As RichTextBox
+    Friend WithEvents cmdReset As Button
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
 End Class
