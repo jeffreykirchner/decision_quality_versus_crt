@@ -1563,37 +1563,21 @@ Public Class frmMain
         End Try
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub cmdCopy_Click(sender As Object, e As EventArgs) Handles cmdCopy.Click
         Try
-            Dim myReq As HttpWebRequest
-            Dim myResp As HttpWebResponse
-            Dim myReader As StreamReader
+            'copy student id and earnings to clip board
+            Dim tempString As String = ""
 
-            myReq = HttpWebRequest.Create("http://localhost:8000/get-email/2025-01-01/2025-06-01")
-            myReq.Method = "GET"
-            myReq.ContentType = "application/json"
-            myReq.Accept = "application/json"
+            For i As Integer = 1 To numberOfPlayers
 
-            ' Basic Authentication
-            Dim username As String = "Multi_socket_user_template_local"
-            Dim password As String = "k6c4eFUytFZg5QP$"
+                tempString += playerlist(i).studentID & vbTab
+                tempString += dgMain(3, i - 1).Value & vbCrLf
+            Next
 
-            Dim credentials As String = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(username & ":" & password))
-            myReq.Headers("Authorization") = "Basic " & credentials
+            Clipboard.SetText(tempString)
 
-            'Dim myData As String = "{}"
-            'Dim dataBytes As Byte() = System.Text.Encoding.UTF8.GetBytes(myData)
-            'myReq.ContentLength = dataBytes.Length
-
-            'Using requestStream As Stream = myReq.GetRequestStream()
-            '    requestStream.Write(dataBytes, 0, dataBytes.Length)
-            'End Using
-
-            myResp = CType(myReq.GetResponse(), HttpWebResponse)
-            myReader = New StreamReader(myResp.GetResponseStream())
-            Debug.Print(myReader.ReadToEnd())
         Catch ex As Exception
-            Debug.Print("fail")
+
         End Try
     End Sub
 End Class
