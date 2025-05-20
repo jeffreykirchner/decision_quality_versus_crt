@@ -24,6 +24,7 @@
             writeINI(sfile, "gameSettings", "englishStartScale", txtEnglishStartScale.Text)
             writeINI(sfile, "gameSettings", "englishEndScale", txtEnglishEndScale.Text)
             writeINI(sfile, "gameSettings", "englishStartDelay", txtEnglishStartDelay.Text)
+            writeINI(sfile, "gameSettings", "readyToGoOnTime", txtReadyToGoOnTime.Text)
 
             writeINI(sfile, "gameSettings", "showInstructions", cbShowInstructions.Checked)
             writeINI(sfile, "gameSettings", "testMode", cbTestMode.Checked)
@@ -78,6 +79,8 @@
             txtEnglishStartScale.Text = getINI(sfile, "gameSettings", "englishStartScale")
             txtEnglishEndScale.Text = getINI(sfile, "gameSettings", "englishEndScale")
             txtEnglishStartDelay.Text = getINI(sfile, "gameSettings", "englishStartDelay")
+
+            txtReadyToGoOnTime.Text = getINI(sfile, "gameSettings", "readyToGoOnTime")
 
             If getINI(sfile, "gameSettings", "englishBidMode") = "full" Then
                 rbFull.Checked = True

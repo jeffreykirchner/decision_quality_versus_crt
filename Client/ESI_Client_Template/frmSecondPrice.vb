@@ -128,9 +128,10 @@
                 If cmdSubmit.Text = "Submit Bids" Then
 
                     submitAction()
-                Else
+                ElseIf cmdSubmit.Text = "Ready to Go On" Then
                     cmdSubmit.Visible = False
                     lblInfoLeft.Text = "Waiting for others."
+                    Timer2.Enabled = False
 
                     frmClient.AC.sendMessage("03", "")
                 End If
@@ -603,6 +604,17 @@
                 Else
                     cmdSubmit.BackColor = Color.FromArgb(192, 255, 192)
                 End If
+            End If
+        Catch ex As Exception
+            appEventLog_Write("error :", ex)
+        End Try
+    End Sub
+
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        Try
+            Timer2.Enabled = False
+            If cmdSubmit.Text = "Ready to Go On" Then
+                cmdSubmit.PerformClick()
             End If
         Catch ex As Exception
             appEventLog_Write("error :", ex)

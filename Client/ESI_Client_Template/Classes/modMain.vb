@@ -30,6 +30,7 @@ Module modMain
     Public quizQuestionValue As Double
     Public practicePeriods As Double
     Public enableChatBot As Boolean
+    Public readyToGoOnTime As Integer                           'time to wait before automatically continuing to next period
 
     Public myGroup As Integer
 
@@ -204,6 +205,9 @@ Module modMain
                 nextToken += 1
 
                 enableChatBot = msgtokens(nextToken)
+                nextToken += 1
+
+                readyToGoOnTime = msgtokens(nextToken)
                 nextToken += 1
 
                 'lotteries
@@ -978,6 +982,8 @@ Module modMain
                     .lblInfoLeft.Text = "Press Ready to Go On"
                     .cmdSubmit.Text = "Ready to Go On"
                     .cmdSubmit.Visible = True
+                    .Timer2.Interval = readyToGoOnTime * 1000
+                    .Timer2.Enabled = True
                 Else
                     .lblInfoLeft.Text = "Your cash balance is below zero."
                     .cmdSubmit.Visible = False
@@ -1560,6 +1566,8 @@ Module modMain
 
                 .cmdSubmit.Text = "Ready to Go On"
                 .cmdSubmit.Visible = True
+                .Timer2.Interval = readyToGoOnTime * 1000
+                .Timer2.Enabled = True
 
                 .lblInfoLeft.Location = New Point(709, 276)
 

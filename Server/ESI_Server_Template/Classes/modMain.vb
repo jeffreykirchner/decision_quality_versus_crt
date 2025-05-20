@@ -33,6 +33,7 @@ Module modMain
     Public numberOfPeriodsLottery As Integer
     Public numberOfPeriodsSecondPrice As Integer
     Public numberOfPeriodsEnglish As Integer
+    Public readyToGoOnTime As Integer                           'time to wait before automatically continuing to next period
 
     'second price
     Public secondPriceBidListLarge(10, 100, 100) As secondPriceBid   'group, sub period, bid
@@ -133,6 +134,7 @@ Module modMain
             quizQuestionValue = getINI(sfile, "gameSettings", "quizQuestionValue")
             practicePeriods = getINI(sfile, "gameSettings", "practicePeriods")
             enableChatBot = getINI(sfile, "gameSettings", "enableChatBot")
+            readyToGoOnTime = getINI(sfile, "gameSettings", "readyToGoOnTime")
 
             lotteryTicketCount = getINI(sfile, "gameSettings", "lotteryTicketCount")
             lotteryPeriodLength = getINI(sfile, "gameSettings", "lotteryPeriodLength")

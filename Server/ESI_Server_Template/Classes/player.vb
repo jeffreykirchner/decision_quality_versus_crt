@@ -119,6 +119,7 @@ Public Class player
             outstr &= quizQuestionValue & ";"
             outstr &= practicePeriods & ";"
             outstr &= enableChatBot & ";"
+            outstr &= readyToGoOnTime & ";"
 
             'lotteries
             outstr &= lotteryTicketCount & ";"

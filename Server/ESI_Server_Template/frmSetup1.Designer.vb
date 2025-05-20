@@ -82,6 +82,8 @@ Partial Class frmSetup1
         Me.txtLotteryPeriodLength = New System.Windows.Forms.TextBox()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.cbEnableChatBot = New System.Windows.Forms.CheckBox()
+        Me.txtReadyToGoOnTime = New System.Windows.Forms.TextBox()
+        Me.Label27 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
@@ -89,7 +91,7 @@ Partial Class frmSetup1
         'cmdSaveAndClose
         '
         Me.cmdSaveAndClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdSaveAndClose.Location = New System.Drawing.Point(635, 394)
+        Me.cmdSaveAndClose.Location = New System.Drawing.Point(635, 444)
         Me.cmdSaveAndClose.Name = "cmdSaveAndClose"
         Me.cmdSaveAndClose.Size = New System.Drawing.Size(276, 31)
         Me.cmdSaveAndClose.TabIndex = 0
@@ -253,7 +255,7 @@ Partial Class frmSetup1
         '
         Me.cbShowInstructions.AutoSize = True
         Me.cbShowInstructions.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbShowInstructions.Location = New System.Drawing.Point(813, 363)
+        Me.cbShowInstructions.Location = New System.Drawing.Point(813, 413)
         Me.cbShowInstructions.Name = "cbShowInstructions"
         Me.cbShowInstructions.Size = New System.Drawing.Size(172, 24)
         Me.cbShowInstructions.TabIndex = 17
@@ -283,7 +285,7 @@ Partial Class frmSetup1
         '
         Me.cbTestMode.AutoSize = True
         Me.cbTestMode.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbTestMode.Location = New System.Drawing.Point(622, 363)
+        Me.cbTestMode.Location = New System.Drawing.Point(622, 413)
         Me.cbTestMode.Name = "cbTestMode"
         Me.cbTestMode.Size = New System.Drawing.Size(112, 24)
         Me.cbTestMode.TabIndex = 20
@@ -627,7 +629,7 @@ Partial Class frmSetup1
         '
         Me.cbShowEnglishPVSecondPriceProfit.AutoSize = True
         Me.cbShowEnglishPVSecondPriceProfit.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbShowEnglishPVSecondPriceProfit.Location = New System.Drawing.Point(622, 303)
+        Me.cbShowEnglishPVSecondPriceProfit.Location = New System.Drawing.Point(622, 353)
         Me.cbShowEnglishPVSecondPriceProfit.Name = "cbShowEnglishPVSecondPriceProfit"
         Me.cbShowEnglishPVSecondPriceProfit.Size = New System.Drawing.Size(300, 24)
         Me.cbShowEnglishPVSecondPriceProfit.TabIndex = 55
@@ -657,19 +659,40 @@ Partial Class frmSetup1
         '
         Me.cbEnableChatBot.AutoSize = True
         Me.cbEnableChatBot.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbEnableChatBot.Location = New System.Drawing.Point(622, 333)
+        Me.cbEnableChatBot.Location = New System.Drawing.Point(622, 383)
         Me.cbEnableChatBot.Name = "cbEnableChatBot"
         Me.cbEnableChatBot.Size = New System.Drawing.Size(160, 24)
         Me.cbEnableChatBot.TabIndex = 58
         Me.cbEnableChatBot.Text = "Enable Chat Bot"
         Me.cbEnableChatBot.UseVisualStyleBackColor = True
         '
+        'txtReadyToGoOnTime
+        '
+        Me.txtReadyToGoOnTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtReadyToGoOnTime.Location = New System.Drawing.Point(825, 299)
+        Me.txtReadyToGoOnTime.Name = "txtReadyToGoOnTime"
+        Me.txtReadyToGoOnTime.Size = New System.Drawing.Size(162, 26)
+        Me.txtReadyToGoOnTime.TabIndex = 60
+        Me.txtReadyToGoOnTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label27
+        '
+        Me.Label27.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label27.Location = New System.Drawing.Point(530, 301)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(289, 23)
+        Me.Label27.TabIndex = 59
+        Me.Label27.Text = "Ready to Go On Timer (sec)"
+        Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'frmSetup1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(999, 440)
+        Me.ClientSize = New System.Drawing.Size(999, 498)
         Me.ControlBox = False
+        Me.Controls.Add(Me.txtReadyToGoOnTime)
+        Me.Controls.Add(Me.Label27)
         Me.Controls.Add(Me.cbEnableChatBot)
         Me.Controls.Add(Me.txtLotteryPeriodLength)
         Me.Controls.Add(Me.Label26)
@@ -797,4 +820,6 @@ Partial Class frmSetup1
     Friend WithEvents txtLotteryPeriodLength As TextBox
     Friend WithEvents Label26 As Label
     Friend WithEvents cbEnableChatBot As CheckBox
+    Friend WithEvents txtReadyToGoOnTime As TextBox
+    Friend WithEvents Label27 As Label
 End Class
