@@ -84,6 +84,8 @@ Partial Class frmSetup1
         Me.cbEnableChatBot = New System.Windows.Forms.CheckBox()
         Me.txtReadyToGoOnTime = New System.Windows.Forms.TextBox()
         Me.Label27 = New System.Windows.Forms.Label()
+        Me.txtSurveyLink = New System.Windows.Forms.TextBox()
+        Me.Label28 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
@@ -685,12 +687,33 @@ Partial Class frmSetup1
         Me.Label27.Text = "Ready to Go On Timer (sec)"
         Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'txtSurveyLink
+        '
+        Me.txtSurveyLink.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSurveyLink.Location = New System.Drawing.Point(182, 431)
+        Me.txtSurveyLink.Name = "txtSurveyLink"
+        Me.txtSurveyLink.Size = New System.Drawing.Size(326, 26)
+        Me.txtSurveyLink.TabIndex = 62
+        Me.txtSurveyLink.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label28
+        '
+        Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label28.Location = New System.Drawing.Point(9, 434)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(167, 23)
+        Me.Label28.TabIndex = 61
+        Me.Label28.Text = "Survey Link"
+        Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'frmSetup1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(999, 498)
         Me.ControlBox = False
+        Me.Controls.Add(Me.txtSurveyLink)
+        Me.Controls.Add(Me.Label28)
         Me.Controls.Add(Me.txtReadyToGoOnTime)
         Me.Controls.Add(Me.Label27)
         Me.Controls.Add(Me.cbEnableChatBot)
@@ -822,4 +845,6 @@ Partial Class frmSetup1
     Friend WithEvents cbEnableChatBot As CheckBox
     Friend WithEvents txtReadyToGoOnTime As TextBox
     Friend WithEvents Label27 As Label
+    Friend WithEvents txtSurveyLink As TextBox
+    Friend WithEvents Label28 As Label
 End Class

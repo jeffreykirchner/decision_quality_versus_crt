@@ -31,6 +31,7 @@ Module modMain
     Public practicePeriods As Double
     Public enableChatBot As Boolean
     Public readyToGoOnTime As Integer                           'time to wait before automatically continuing to next period
+    Public surveyLink As String                                 'link to post experiment survey 
 
     Public myGroup As Integer
 
@@ -208,6 +209,9 @@ Module modMain
                 nextToken += 1
 
                 readyToGoOnTime = msgtokens(nextToken)
+                nextToken += 1
+
+                surveyLink = msgtokens(nextToken)
                 nextToken += 1
 
                 'lotteries

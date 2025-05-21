@@ -16,6 +16,10 @@
             txtIDNumber.Visible = False
 
             lbl1.Visible = True
+
+            If surveyLink <> "" Then
+                Process.Start("C:\Program Files\Google\Chrome\Application\chrome.exe", surveyLink & "&student_id=" & txtIDNumber.Text & " --incognito --kiosk")
+            End If
         Catch ex As Exception
             appEventLog_Write("error :", ex)
         End Try

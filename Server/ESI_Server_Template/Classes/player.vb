@@ -108,6 +108,13 @@ Public Class player
 
             Dim outstr As String = str
 
+            Dim surveyLinkWithParameters As String = surveyLink
+
+            If surveyLinkWithParameters <> "" Then
+                surveyLinkWithParameters &= "?player_id=" & inumber
+                surveyLinkWithParameters &= "&session_id=" & tempTime
+            End If
+
             outstr &= numberOfPlayers & ";"
             outstr &= numberOfPeriods & ";"
             outstr &= portNumber & ";"
@@ -120,6 +127,7 @@ Public Class player
             outstr &= practicePeriods & ";"
             outstr &= enableChatBot & ";"
             outstr &= readyToGoOnTime & ";"
+            outstr &= surveyLinkWithParameters & ";"
 
             'lotteries
             outstr &= lotteryTicketCount & ";"
