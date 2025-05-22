@@ -21,6 +21,7 @@ Module modMain
     Public testMode As Boolean
     Public filename As String                        'location of data file
     Public enableChatBot As Boolean
+    Public surveyLink As String
 
     Public currentPeriod As Integer
     Public subLotteryPeriod As Integer
@@ -97,6 +98,7 @@ Module modMain
     Public englishDf As StreamWriter                 'lottery data file
     Public english2Df As StreamWriter                'lottery data file
     Public chatBotDf As StreamWriter                 'chat bot data file
+    Public dfDate As String
 
     Public checkin As Integer = 0
 
@@ -135,6 +137,7 @@ Module modMain
             practicePeriods = getINI(sfile, "gameSettings", "practicePeriods")
             enableChatBot = getINI(sfile, "gameSettings", "enableChatBot")
             readyToGoOnTime = getINI(sfile, "gameSettings", "readyToGoOnTime")
+            surveyLink = getINI(sfile, "gameSettings", "surveyLink")
 
             lotteryTicketCount = getINI(sfile, "gameSettings", "lotteryTicketCount")
             lotteryPeriodLength = getINI(sfile, "gameSettings", "lotteryPeriodLength")
