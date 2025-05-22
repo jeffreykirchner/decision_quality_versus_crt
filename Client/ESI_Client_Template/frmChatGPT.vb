@@ -9,7 +9,8 @@ Imports OpenAI.Assistants
 Public Class frmChatGPT
 
     Dim messages As New List(Of ChatMessage) From {
-        New SystemChatMessage("You are a helpful AI assistant that answers questions concisely.")
+        New SystemChatMessage("You are a helpful AI assistant that answers questions concisely."),
+        New SystemChatMessage("Replay only with ASCII printable characters.")
     }
 
     Dim clientOptions As New OpenAIClientOptions
@@ -72,8 +73,8 @@ Public Class frmChatGPT
 
             'send the reponse to the server.
             Dim str As String = ""
-            str = textPrompt.Text & ";"
-            str &= content & ";"
+            str = textPrompt.Text & "|"
+            str &= content.Replace("'", "`") & "|"
 
             frmClient.AC.sendMessage("07", str)
 
@@ -126,7 +127,8 @@ Public Class frmChatGPT
             rtbResponse.AppendText(vbCrLf & vbCrLf)
 
             messages = New List(Of ChatMessage) From {
-                New SystemChatMessage("You are a helpful AI assistant that answers questions concisely.")
+                New SystemChatMessage("You are a helpful AI assistant that answers questions concisely."),
+                New SystemChatMessage("Replay only with ASCII printable characters.")
             }
             cmdSend.Enabled = True
         Catch ex As Exception
