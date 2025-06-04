@@ -128,7 +128,7 @@ Public Class frmChatGPT
 
             messages = New List(Of ChatMessage) From {
                 New SystemChatMessage("You are a helpful AI assistant that answers questions concisely."),
-                New SystemChatMessage("Replay only with ASCII printable characters.")
+                New SystemChatMessage("Reply only with ASCII printable characters.")
             }
             cmdSend.Enabled = True
         Catch ex As Exception
