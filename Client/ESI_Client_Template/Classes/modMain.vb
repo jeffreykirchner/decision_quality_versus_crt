@@ -1371,8 +1371,8 @@ Module modMain
             End If
 
             If enableChatBot Then
-                frmChatGPT.Show()
-                frmChatGPT.Location = New Point(windowX, windowY)
+                'frmChatGPT.Show()
+                'frmChatGPT.Location = New Point(windowX, windowY)
             End If
 
         Catch ex As Exception
@@ -1403,10 +1403,20 @@ Module modMain
                 My.Forms.frmEnglish.Hide()
 
                 If enableChatBot And Not showInstructions Then
-                    frmChatGPT.Show()
-                    frmChatGPT.Location = New Point(10, My.Forms.frmSecondPrice.Height + 20)
-                    frmChatGPT.Width = My.Forms.frmSecondPrice.Width
-                    frmChatGPT.Height = My.Computer.Screen.Bounds.Height - 20 - My.Forms.frmSecondPrice.Height
+                    'frmChatGPT.Show()
+                    'frmChatGPT.Location = New Point(10, My.Forms.frmSecondPrice.Height + 20)
+                    'frmChatGPT.Width = My.Forms.frmSecondPrice.Width
+                    'frmChatGPT.Height = My.Computer.Screen.Bounds.Height - 20 - My.Forms.frmSecondPrice.Height
+
+                    If enableChatBot Then
+                        frmSecondPrice.gbChatGPT.Visible = True
+                        frmSecondPrice.Height = 1000
+                    Else
+                        frmSecondPrice.gbChatGPT.Visible = False
+                        frmSecondPrice.Height = 720
+                    End If
+
+                    frmSecondPrice.Location = New Point(windowX, windowY)
                 End If
             Else
                 takeEnglishStart(msgtokens, nextToken)
