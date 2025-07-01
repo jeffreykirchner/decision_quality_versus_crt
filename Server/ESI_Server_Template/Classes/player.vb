@@ -1,5 +1,7 @@
 ﻿
 
+Imports System.Net
+
 Public Class player
 
     Public sp As New socketPlayer
@@ -326,7 +328,7 @@ Public Class player
                 str = subSecondPricePeriod & ";"
                 str &= secondPriceEarnings & ";"
                 str &= secondPriceValues(tempPeriod) & ";"
-                str &= .getNumberInMyGroup(tempGroupLarge,currentPeriod) & ";"
+                str &= .getNumberInMyGroup(tempGroupLarge, currentPeriod) & ";"
                 str &= .getSecondPriceNumberInMyGroupSmall(tempGroupSmall, subSecondPricePeriod) & ";"
 
                 str &= myGroup(currentPeriod) & ";"
@@ -828,15 +830,17 @@ Public Class player
     Public Sub takeChatBotMessage(str As String)
         Try
             With frmServer
-                Dim msgtokens() As String = str.Split(";")
+                Dim msgtokens() As String = str.Split("|")
                 Dim nextToken As Integer = 0
 
                 'take prompt
-                Dim prompt As String = msgtokens(nextToken)
+                Dim display_prompt As String = msgtokens(nextToken)
+                Dim prompt As String = """" & msgtokens(nextToken).Replace("""", "`") & """"
                 nextToken += 1
 
                 'take response
-                Dim response As String = msgtokens(nextToken)
+                Dim display_response As String = msgtokens(nextToken)
+                Dim response As String = """" & msgtokens(nextToken).Replace("""", "`") & """"
                 nextToken += 1
 
                 Dim outstr As String = ""
@@ -849,6 +853,34 @@ Public Class player
                 outstr &= response & ","
 
                 chatBotDf.WriteLine(outstr)
+
+                'add prompt to chat bot box
+                Dim display_player As String = "*** Player " & inumber & " ***"
+
+                .rtbChatBot.AppendText(display_player)
+                .rtbChatBot.SelectionStart = .rtbChatBot.Text.Length - display_player.Length
+                .rtbChatBot.SelectionLength = display_player.Length
+                .rtbChatBot.SelectionAlignment = HorizontalAlignment.Center
+                Dim currentFont As Font = .rtbChatBot.SelectionFont
+                If currentFont IsNot Nothing Then
+                    .rtbChatBot.SelectionFont = New Font(currentFont, FontStyle.Italic)
+                End If
+                .rtbChatBot.AppendText(vbCrLf)
+
+                .rtbChatBot.AppendText(display_prompt)
+                .rtbChatBot.SelectionStart = .rtbChatBot.Text.Length - display_prompt.Length
+                .rtbChatBot.SelectionLength = display_prompt.Length
+                .rtbChatBot.SelectionAlignment = HorizontalAlignment.Right
+                .rtbChatBot.AppendText(vbCrLf & vbCrLf)
+
+                'add response to chat bot box
+                .rtbChatBot.AppendText(display_response)
+                .rtbChatBot.SelectionStart = .rtbChatBot.Text.Length - display_response.Length
+                .rtbChatBot.SelectionLength = display_response.Length
+                .rtbChatBot.SelectionAlignment = HorizontalAlignment.Left
+                .rtbChatBot.ScrollToCaret()
+                .rtbChatBot.AppendText(vbCrLf & vbCrLf)
+
             End With
         Catch ex As Exception
             appEventLog_Write("Error :", ex)
