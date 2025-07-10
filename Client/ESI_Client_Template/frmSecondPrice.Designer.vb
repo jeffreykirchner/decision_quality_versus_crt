@@ -126,12 +126,12 @@ Partial Class frmSecondPrice
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.gbChatGPT = New System.Windows.Forms.GroupBox()
+        Me.cmdDoneChatting = New System.Windows.Forms.Button()
         Me.pnlChatBot = New System.Windows.Forms.TableLayoutPanel()
         Me.cmdSend = New System.Windows.Forms.Button()
         Me.textPrompt = New System.Windows.Forms.TextBox()
         Me.cmdReset = New System.Windows.Forms.Button()
         Me.rtbResponse = New System.Windows.Forms.RichTextBox()
-        Me.cmdDoneChatting = New System.Windows.Forms.Button()
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.gbBidLeft.SuspendLayout()
         Me.gb2Left.SuspendLayout()
@@ -1017,6 +1017,19 @@ Partial Class frmSecondPrice
         Me.gbChatGPT.Text = "Chat Bot"
         Me.gbChatGPT.Visible = False
         '
+        'cmdDoneChatting
+        '
+        Me.cmdDoneChatting.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdDoneChatting.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdDoneChatting.Location = New System.Drawing.Point(12, 272)
+        Me.cmdDoneChatting.Name = "cmdDoneChatting"
+        Me.cmdDoneChatting.Size = New System.Drawing.Size(227, 38)
+        Me.cmdDoneChatting.TabIndex = 9
+        Me.cmdDoneChatting.Text = "Done Chatting"
+        Me.cmdDoneChatting.UseVisualStyleBackColor = True
+        Me.cmdDoneChatting.Visible = False
+        '
         'pnlChatBot
         '
         Me.pnlChatBot.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
@@ -1024,7 +1037,7 @@ Partial Class frmSecondPrice
         Me.pnlChatBot.ColumnCount = 3
         Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.55264!))
         Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.44737!))
-        Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143.0!))
+        Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144.0!))
         Me.pnlChatBot.Controls.Add(Me.cmdSend, 1, 0)
         Me.pnlChatBot.Controls.Add(Me.textPrompt, 0, 0)
         Me.pnlChatBot.Controls.Add(Me.cmdReset, 2, 0)
@@ -1044,7 +1057,7 @@ Partial Class frmSecondPrice
         Me.cmdSend.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdSend.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdSend.Location = New System.Drawing.Point(722, 3)
+        Me.cmdSend.Location = New System.Drawing.Point(721, 3)
         Me.cmdSend.Name = "cmdSend"
         Me.cmdSend.Size = New System.Drawing.Size(86, 28)
         Me.cmdSend.TabIndex = 0
@@ -1058,9 +1071,9 @@ Partial Class frmSecondPrice
         Me.textPrompt.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.textPrompt.ForeColor = System.Drawing.Color.Black
         Me.textPrompt.Location = New System.Drawing.Point(3, 3)
-        Me.textPrompt.MaxLength = 200
+        Me.textPrompt.MaxLength = 100
         Me.textPrompt.Name = "textPrompt"
-        Me.textPrompt.Size = New System.Drawing.Size(713, 26)
+        Me.textPrompt.Size = New System.Drawing.Size(712, 26)
         Me.textPrompt.TabIndex = 2
         Me.textPrompt.Text = "Type your question here."
         Me.textPrompt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1068,7 +1081,7 @@ Partial Class frmSecondPrice
         'cmdReset
         '
         Me.cmdReset.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdReset.Location = New System.Drawing.Point(814, 3)
+        Me.cmdReset.Location = New System.Drawing.Point(813, 3)
         Me.cmdReset.Name = "cmdReset"
         Me.cmdReset.Size = New System.Drawing.Size(134, 28)
         Me.cmdReset.TabIndex = 5
@@ -1089,19 +1102,6 @@ Partial Class frmSecondPrice
         Me.rtbResponse.Size = New System.Drawing.Size(1700, 245)
         Me.rtbResponse.TabIndex = 7
         Me.rtbResponse.Text = ""
-        '
-        'cmdDoneChatting
-        '
-        Me.cmdDoneChatting.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdDoneChatting.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdDoneChatting.Location = New System.Drawing.Point(12, 272)
-        Me.cmdDoneChatting.Name = "cmdDoneChatting"
-        Me.cmdDoneChatting.Size = New System.Drawing.Size(227, 38)
-        Me.cmdDoneChatting.TabIndex = 9
-        Me.cmdDoneChatting.Text = "Done Chatting"
-        Me.cmdDoneChatting.UseVisualStyleBackColor = True
-        Me.cmdDoneChatting.Visible = False
         '
         'Timer3
         '
