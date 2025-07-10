@@ -32,6 +32,7 @@ Module modMain
     Public enableChatBot As Boolean
     Public readyToGoOnTime As Integer                           'time to wait before automatically continuing to next period
     Public surveyLink As String                                 'link to post experiment survey 
+    Public chatBotTime As Integer                               'time subject can chat before each period
 
     Public myGroup As Integer
 
@@ -151,6 +152,8 @@ Module modMain
                     takeEnglishPVStop(message)
                 Case "11"
                     takeEnglishPVResult(message)
+                Case "12"
+                    takeSecondPriceDoneChat(message)
 
             End Select
 
@@ -212,6 +215,9 @@ Module modMain
                 nextToken += 1
 
                 surveyLink = msgtokens(nextToken)
+                nextToken += 1
+
+                chatBotTime = msgtokens(nextToken)
                 nextToken += 1
 
                 'lotteries
@@ -572,6 +578,9 @@ Module modMain
                 Dim tempEnglishPVSmallPrice As Double = msgtokens(nextToken)
                 nextToken += 1
 
+                Dim showChat As Boolean = msgtokens(nextToken)
+                nextToken += 1
+
                 .txtCashLeft.Text = Format(tempCash, "0.00")
                 .txtCashRight.Text = Format(tempCash, "0.00")
 
@@ -679,6 +688,23 @@ Module modMain
                     .lblMyBidRight.Text = "Price ($)"
                 End If
 
+                If showChat Then
+                    .pnlChatBot.Visible = True
+                    If myGroup <> -1 Then
+
+                        If Not showInstructions Then
+                            .cmdDoneChatting.Visible = True
+                            .chatTimeRemaining = chatBotTime
+                            .Timer3.Enabled = True
+                        End If
+
+                        .updateRightProfit()
+                            .updateLeftProfit()
+                            .cmdSubmitLargeEnglish.Enabled = False
+                            .cmdSubmitSmallEnglish.Enabled = False
+                            .cmdSubmit.Enabled = False
+                        End If
+                    End If
 
                 'show profit
                 If englishPVSecondPriceShowProfit Then
@@ -696,6 +722,24 @@ Module modMain
                 End If
 
                 .Location = New Point(windowX, windowY)
+            End With
+        Catch ex As Exception
+            appEventLog_Write("error :", ex)
+        End Try
+    End Sub
+
+    Public Sub takeSecondPriceDoneChat(str As String)
+        Try
+            With frmSecondPrice
+                .pnlChatBot.Visible = False
+                .cmdDoneChatting.Visible = False
+                .Timer3.Enabled = False
+                .updateRightProfit()
+                .updateLeftProfit()
+                .cmdSubmitLargeEnglish.Enabled = True
+                .cmdSubmitSmallEnglish.Enabled = True
+                .cmdSubmit.Enabled = True
+                .cmdSubmit.BackColor = Color.FromArgb(192, 255, 192)
             End With
         Catch ex As Exception
             appEventLog_Write("error :", ex)
@@ -1402,7 +1446,7 @@ Module modMain
                 My.Forms.frmLottery.Hide()
                 My.Forms.frmEnglish.Hide()
 
-                If enableChatBot And Not showInstructions Then
+                If enableChatBot Then
                     'frmChatGPT.Show()
                     'frmChatGPT.Location = New Point(10, My.Forms.frmSecondPrice.Height + 20)
                     'frmChatGPT.Width = My.Forms.frmSecondPrice.Width
@@ -1410,7 +1454,7 @@ Module modMain
 
                     If enableChatBot Then
                         frmSecondPrice.gbChatGPT.Visible = True
-                        frmSecondPrice.Height = 1000
+                        frmSecondPrice.Height = 1030
                     Else
                         frmSecondPrice.gbChatGPT.Visible = False
                         frmSecondPrice.Height = 720
@@ -1467,11 +1511,17 @@ Module modMain
 
                     My.Forms.frmSecondPrice.lblLeft.Text = "Large Market (" & "10" & " bidders)"
                     My.Forms.frmSecondPrice.lblRight.Text = "Small Market (" & "5" & " bidders)"
+
+                    My.Forms.frmSecondPrice.cmdSubmit.Enabled = True
+
                 ElseIf currentPhase = "English Auction" And subPeriod = 1 Then
                     My.Forms.frmSecondPrice.Location = New Point(windowX, windowY)
 
                     My.Forms.frmSecondPrice.lblLeft.Text = "Large Market (" & "10" & " players)"
                     My.Forms.frmSecondPrice.lblRight.Text = "Small Market (" & "5" & " players)"
+
+                    My.Forms.frmSecondPrice.cmdSubmitLargeEnglish.Enabled = True
+                    My.Forms.frmSecondPrice.cmdSubmitSmallEnglish.Enabled = True
                 ElseIf currentPhase = "CV Full Info" Or currentPhase = "CV Limited Info" And subPeriod = 1 Then
                     With My.Forms.frmEnglish
                         englishObserver = -1

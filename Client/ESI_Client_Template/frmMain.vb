@@ -245,6 +245,11 @@
                                     My.Forms.frmSecondPrice.txtBidRight.Text = "26"
                                     My.Forms.frmSecondPrice.cmdSubmit.PerformClick()
                                 End If
+                            Case .exp4
+                                If My.Forms.frmSecondPrice.pnlChatBot.Visible Then
+                                    My.Forms.frmSecondPrice.textPrompt.Text = "Testing ... 1, two, cuatro"
+                                    My.Forms.frmSecondPrice.cmdSend.PerformClick()
+                                End If
 
                             Case .eqp1
                                 .txtQuiz.Text = "4"
@@ -300,7 +305,7 @@
             ElseIf My.Forms.frmSecondPrice.Visible Then
                 With frmSecondPrice
                     If currentPhase = "2nd Price" Then
-                        If .cmdSubmit.Visible Then
+                        If .cmdSubmit.Visible And .cmdSubmit.Enabled Then
 
                             If .cmdSubmit.Text = "Submit Bids" Then
                                 .txtBidLeft.Text = CDbl(.txtValueLeft.Text) + rand(Math.Ceiling(CDbl(.txtValueLeft.Text) * 0.2), Math.Floor(-CDbl(.txtValueLeft.Text) * 0.1))
@@ -308,11 +313,28 @@
                             End If
 
                             .cmdSubmit.PerformClick()
+
+                        ElseIf .pnlChatBot.Visible And .cmdDoneChatting.Visible Then
+                            'chat bot
+                            If rand(5, 1) = 1 And .cmdSend.Text <> "Working..." Then
+                                .textPrompt.Text = "Hello!"
+                                .cmdSend.PerformClick()
+                            ElseIf rand(30, 1) = 1 And .cmdDoneChatting.Visible Then
+                                .cmdDoneChatting.PerformClick()
+                            End If
                         End If
                     Else
-                        If .cmdSubmit.Visible Then
+                        If .cmdSubmit.Visible And .cmdSubmit.Enabled Then
                             'ready to go on
                             .cmdSubmit.PerformClick()
+                        ElseIf .pnlChatBot.Visible And .cmdDoneChatting.Visible Then
+                            'chat bot
+                            If rand(5, 1) = 1 And .cmdSend.Text <> "Working..." Then
+                                .textPrompt.Text = "Hello!"
+                                .cmdSend.PerformClick()
+                            ElseIf rand(30, 1) = 1 And .cmdDoneChatting.Visible Then
+                                .cmdDoneChatting.PerformClick()
+                            End If
                         Else
                             'submit bid
 

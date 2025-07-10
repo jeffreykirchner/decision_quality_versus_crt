@@ -7,6 +7,7 @@
     Public exp1 As Integer = 21
     Public exp2 As Integer = 24
     Public exp3 As Integer = 26
+    Public exp4 As Integer = 27
 
     ' quiz pages
     Public eqp1 As Integer = 12
@@ -53,7 +54,12 @@
                 exp2 = 5
                 exp3 = 6
 
-                numberOfPages = 15
+                If enableChatBot Then
+                    numberOfPages = 16
+                    exp4 = 15
+                Else
+                    numberOfPages = 15
+                End If
 
                 eqp1 = 10
                 eqp2 = 11
@@ -77,7 +83,12 @@
                 exp2 = 5
                 exp3 = 6
 
-                numberOfPages = 15
+                If enableChatBot Then
+                    numberOfPages = 16
+                    exp4 = 15
+                Else
+                    numberOfPages = 15
+                End If
 
                 eqp1 = 10
                 eqp2 = 11
@@ -337,6 +348,7 @@
                 RepRTBfield2("SmallGroupSize", secondPriceNumberOfPlayersSmall)
                 RepRTBfield2("StartingCash", secondPriceStartingCash)
                 RepRTBfield2("quizQuestionValue", Format(quizQuestionValue, "0.00"))
+                RepRTBfield2("chatBotTime", chatBotTime)
 
                 If firstSide = "small" Then
                     RepRTBfield2("firstMarket", "small")
@@ -497,6 +509,7 @@
                 RepRTBfield2("StartingCash", secondPriceStartingCash)
                 RepRTBfield2("quizQuestionValue", Format(quizQuestionValue, "0.00"))
                 RepRTBfield2("MaxBid", Format(secondPriceMaxBid, "0.00"))
+                RepRTBfield2("chatBotTime", chatBotTime)
 
                 Select Case currentInstruction
                     Case 2, 3, 7, 8, 9

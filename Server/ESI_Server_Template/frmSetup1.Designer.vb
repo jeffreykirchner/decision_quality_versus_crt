@@ -86,6 +86,8 @@ Partial Class frmSetup1
         Me.Label27 = New System.Windows.Forms.Label()
         Me.txtSurveyLink = New System.Windows.Forms.TextBox()
         Me.Label28 = New System.Windows.Forms.Label()
+        Me.txtChatBotTime = New System.Windows.Forms.TextBox()
+        Me.Label29 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
@@ -93,7 +95,7 @@ Partial Class frmSetup1
         'cmdSaveAndClose
         '
         Me.cmdSaveAndClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdSaveAndClose.Location = New System.Drawing.Point(635, 444)
+        Me.cmdSaveAndClose.Location = New System.Drawing.Point(393, 491)
         Me.cmdSaveAndClose.Name = "cmdSaveAndClose"
         Me.cmdSaveAndClose.Size = New System.Drawing.Size(276, 31)
         Me.cmdSaveAndClose.TabIndex = 0
@@ -257,7 +259,7 @@ Partial Class frmSetup1
         '
         Me.cbShowInstructions.AutoSize = True
         Me.cbShowInstructions.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbShowInstructions.Location = New System.Drawing.Point(813, 413)
+        Me.cbShowInstructions.Location = New System.Drawing.Point(813, 438)
         Me.cbShowInstructions.Name = "cbShowInstructions"
         Me.cbShowInstructions.Size = New System.Drawing.Size(172, 24)
         Me.cbShowInstructions.TabIndex = 17
@@ -287,7 +289,7 @@ Partial Class frmSetup1
         '
         Me.cbTestMode.AutoSize = True
         Me.cbTestMode.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbTestMode.Location = New System.Drawing.Point(622, 413)
+        Me.cbTestMode.Location = New System.Drawing.Point(622, 438)
         Me.cbTestMode.Name = "cbTestMode"
         Me.cbTestMode.Size = New System.Drawing.Size(112, 24)
         Me.cbTestMode.TabIndex = 20
@@ -631,7 +633,7 @@ Partial Class frmSetup1
         '
         Me.cbShowEnglishPVSecondPriceProfit.AutoSize = True
         Me.cbShowEnglishPVSecondPriceProfit.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbShowEnglishPVSecondPriceProfit.Location = New System.Drawing.Point(622, 353)
+        Me.cbShowEnglishPVSecondPriceProfit.Location = New System.Drawing.Point(622, 378)
         Me.cbShowEnglishPVSecondPriceProfit.Name = "cbShowEnglishPVSecondPriceProfit"
         Me.cbShowEnglishPVSecondPriceProfit.Size = New System.Drawing.Size(300, 24)
         Me.cbShowEnglishPVSecondPriceProfit.TabIndex = 55
@@ -661,7 +663,7 @@ Partial Class frmSetup1
         '
         Me.cbEnableChatBot.AutoSize = True
         Me.cbEnableChatBot.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbEnableChatBot.Location = New System.Drawing.Point(622, 383)
+        Me.cbEnableChatBot.Location = New System.Drawing.Point(622, 408)
         Me.cbEnableChatBot.Name = "cbEnableChatBot"
         Me.cbEnableChatBot.Size = New System.Drawing.Size(160, 24)
         Me.cbEnableChatBot.TabIndex = 58
@@ -690,7 +692,7 @@ Partial Class frmSetup1
         'txtSurveyLink
         '
         Me.txtSurveyLink.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSurveyLink.Location = New System.Drawing.Point(182, 431)
+        Me.txtSurveyLink.Location = New System.Drawing.Point(186, 431)
         Me.txtSurveyLink.Name = "txtSurveyLink"
         Me.txtSurveyLink.Size = New System.Drawing.Size(326, 26)
         Me.txtSurveyLink.TabIndex = 62
@@ -699,19 +701,40 @@ Partial Class frmSetup1
         'Label28
         '
         Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label28.Location = New System.Drawing.Point(9, 434)
+        Me.Label28.Location = New System.Drawing.Point(13, 434)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(167, 23)
         Me.Label28.TabIndex = 61
         Me.Label28.Text = "Survey Link"
         Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'txtChatBotTime
+        '
+        Me.txtChatBotTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtChatBotTime.Location = New System.Drawing.Point(823, 331)
+        Me.txtChatBotTime.Name = "txtChatBotTime"
+        Me.txtChatBotTime.Size = New System.Drawing.Size(162, 26)
+        Me.txtChatBotTime.TabIndex = 64
+        Me.txtChatBotTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label29
+        '
+        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label29.Location = New System.Drawing.Point(528, 333)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(289, 23)
+        Me.Label29.TabIndex = 63
+        Me.Label29.Text = "Chat Bot Time (sec)"
+        Me.Label29.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'frmSetup1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(999, 498)
+        Me.ClientSize = New System.Drawing.Size(1008, 534)
         Me.ControlBox = False
+        Me.Controls.Add(Me.txtChatBotTime)
+        Me.Controls.Add(Me.Label29)
         Me.Controls.Add(Me.txtSurveyLink)
         Me.Controls.Add(Me.Label28)
         Me.Controls.Add(Me.txtReadyToGoOnTime)
@@ -847,4 +870,6 @@ Partial Class frmSetup1
     Friend WithEvents Label27 As Label
     Friend WithEvents txtSurveyLink As TextBox
     Friend WithEvents Label28 As Label
+    Friend WithEvents txtChatBotTime As TextBox
+    Friend WithEvents Label29 As Label
 End Class

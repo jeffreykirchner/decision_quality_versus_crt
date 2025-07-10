@@ -130,6 +130,7 @@ Public Class player
             outstr &= enableChatBot & ";"
             outstr &= readyToGoOnTime & ";"
             outstr &= surveyLinkWithParameters & ";"
+            outstr &= chatBotTime & ";"
 
             'lotteries
             outstr &= lotteryTicketCount & ";"
@@ -317,6 +318,14 @@ Public Class player
                 Dim tempGroupLarge As Integer
                 Dim tempGroupSmall As Integer
 
+                Dim showChat As Boolean = False
+
+                If enableChatBot Then
+                    If Not englishLargeDonePV(subSecondPricePeriod) And Not englishSmallDonePV(subSecondPricePeriod) Then
+                        showChat = True
+                    End If
+                End If
+
                 If myGroup(currentPeriod) = -1 Then
                     tempGroupLarge = secondPriceObserverLarge(tempPeriod)
                     tempGroupSmall = secondPriceObserverSmall(tempPeriod)
@@ -340,6 +349,8 @@ Public Class player
 
                 str &= englishPriceLargePV(tempGroupLarge, tempPeriod) & ";"
                 str &= englishPriceSmallPV(tempGroupSmall, tempPeriod) & ";"
+
+                str &= showChat & ";"
 
                 Return str
             End With
@@ -822,6 +833,15 @@ Public Class player
 
             sendMessage("11", outstr)
 
+        Catch ex As Exception
+            appEventLog_Write("error endEarly:", ex)
+        End Try
+    End Sub
+
+    Public Sub sendDoneChatting()
+        Try
+            Dim outstr As String = ""
+            sendMessage("12", outstr)
         Catch ex As Exception
             appEventLog_Write("error endEarly:", ex)
         End Try

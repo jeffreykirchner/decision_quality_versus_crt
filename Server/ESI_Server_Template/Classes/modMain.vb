@@ -35,6 +35,7 @@ Module modMain
     Public numberOfPeriodsSecondPrice As Integer
     Public numberOfPeriodsEnglish As Integer
     Public readyToGoOnTime As Integer                           'time to wait before automatically continuing to next period
+    Public chatBotTime As Integer                               'time subject can chat before each period
 
     'second price
     Public secondPriceBidListLarge(10, 100, 100) As secondPriceBid   'group, sub period, bid
@@ -138,6 +139,7 @@ Module modMain
             enableChatBot = getINI(sfile, "gameSettings", "enableChatBot")
             readyToGoOnTime = getINI(sfile, "gameSettings", "readyToGoOnTime")
             surveyLink = getINI(sfile, "gameSettings", "surveyLink")
+            chatBotTime = getINI(sfile, "gameSettings", "chatBotTime")
 
             lotteryTicketCount = getINI(sfile, "gameSettings", "lotteryTicketCount")
             lotteryPeriodLength = getINI(sfile, "gameSettings", "lotteryPeriodLength")
@@ -206,6 +208,7 @@ Module modMain
                     Case "07"
                         takeChatBotMessage(index, message)
                     Case "08"
+                        takeSecondPriceDoneChatting(index, message)
                     Case "09"
                     Case "10"
 
@@ -371,7 +374,8 @@ Module modMain
                         currentPeriod += 1
                         subLotteryPeriod += 1
                     ElseIf phaseList(currentPeriod + 1) = "2nd Price" Or
-                    (phaseList(currentPeriod + 1) = "English Auction" And englishLargeDonePV(subSecondPricePeriod) And englishSmallDonePV(subSecondPricePeriod)) Then
+                        (phaseList(currentPeriod + 1) = "English Auction" And englishLargeDonePV(subSecondPricePeriod) And englishSmallDonePV(subSecondPricePeriod)) Then
+
                         subSecondPricePeriod += 1
                         currentPeriod += 1
 
@@ -383,7 +387,7 @@ Module modMain
                         Next
 
                         'start english clock
-                        If phaseList(currentPeriod) = "English Auction" Then
+                        If phaseList(currentPeriod) = "English Auction" And Not enableChatBot Then
                             .Timer4.Enabled = True
                         End If
                     ElseIf phaseList(currentPeriod) = "English Auction" Then
@@ -394,6 +398,8 @@ Module modMain
                         Else
                             englishSidePV(subSecondPricePeriod) = "large"
                         End If
+
+                        .Timer4.Enabled = True
                     Else
                         currentPeriod += 1
                         subEnglishPeriod += 1
@@ -657,7 +663,7 @@ Module modMain
                     Dim tempPerson As Integer = rand(numberOfPlayers, 1)
 
                     If playerlist(tempPerson).secondPriceEarnings >= 0 And
-                playerlist(tempPerson).myGroup(currentPeriod) = -1 Then
+                        playerlist(tempPerson).myGroup(currentPeriod) = -1 Then
 
                         playerlist(tempPerson).myGroup(currentPeriod) = tempLargeGroup
                         playerlist(tempPerson).secondPriceSmallGroup(currentPeriod) = tempSmallGroup
@@ -712,6 +718,7 @@ Module modMain
             End With
         Catch ex As Exception
             appEventLog_Write("error :", ex)
+            Return False
         End Try
     End Function
 
@@ -738,6 +745,36 @@ Module modMain
                     checkin = 0
 
                     calcSecondPriceEnglishPVWinner()
+                End If
+            End With
+        Catch ex As Exception
+            appEventLog_Write("error :", ex)
+        End Try
+    End Sub
+
+    Public Sub takeSecondPriceDoneChatting(index As Integer, str As String)
+        Try
+            With frmServer
+                checkin += 1
+                .dgMain(2, index - 1).Value = "Waiting"
+
+                If checkin = numberOfPlayers Then
+                    checkin = 0
+
+                    For i As Integer = 1 To numberOfPlayers
+
+                        If playerlist(i).myGroup(currentPeriod) = -1 Then
+                            checkin += 1
+                        End If
+
+                        playerlist(i).sendDoneChatting()
+
+                        refreshDisplayStatus(i)
+                    Next
+
+                    If phaseList(currentPeriod) = "English Auction" Then
+                        .Timer4.Enabled = True
+                    End If
                 End If
             End With
         Catch ex As Exception
@@ -1111,20 +1148,20 @@ Module modMain
                     End If
 
                     For i As Integer = 1 To numberOfPlayers
-                            playerlist(i).sendFinishedInstructions()
+                        playerlist(i).sendFinishedInstructions()
 
-                            refreshDisplayStatus(i)
-                        Next
+                        refreshDisplayStatus(i)
+                    Next
 
-                        If (phaseList(1) = "CV Full Info" Or phaseList(1) = "CV Limited Info") And englishBidMode = "drop" Then
-                            englishCurrentStartDelay = englishStartDelay
-                            .Timer3.Enabled = True
-                        End If
-
-                        If phaseList(1) = "English Auction" Then
-                            If phaseList(currentPeriod) = "English Auction" Then .Timer4.Enabled = True
-                        End If
+                    If (phaseList(1) = "CV Full Info" Or phaseList(1) = "CV Limited Info") And englishBidMode = "drop" Then
+                        englishCurrentStartDelay = englishStartDelay
+                        .Timer3.Enabled = True
                     End If
+
+                    If phaseList(1) = "English Auction" Then
+                        If phaseList(currentPeriod) = "English Auction" And Not enableChatBot Then .Timer4.Enabled = True
+                    End If
+                End If
             End With
         Catch ex As Exception
             appEventLog_Write("Error :", ex)
@@ -1188,6 +1225,9 @@ Module modMain
                     If done Then
                         'all bids in
                         'store final price
+
+                        .Timer4.Enabled = False
+
                         englishPriceLargePV(tempGroup, subSecondPricePeriod) = tempBid
 
                         englishLargeDonePV(subSecondPricePeriod) = True
@@ -1236,6 +1276,9 @@ Module modMain
                     If done Then
                         'all bids in
                         'store final price
+
+                        .Timer4.Enabled = False
+
                         englishPriceSmallPV(tempGroup, subSecondPricePeriod) = tempBid
 
                         englishSmallDonePV(subSecondPricePeriod) = True

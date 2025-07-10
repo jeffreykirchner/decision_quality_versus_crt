@@ -26,6 +26,7 @@
             writeINI(sfile, "gameSettings", "englishStartDelay", txtEnglishStartDelay.Text)
             writeINI(sfile, "gameSettings", "readyToGoOnTime", txtReadyToGoOnTime.Text)
             writeINI(sfile, "gameSettings", "surveyLink", txtSurveyLink.Text)
+            writeINI(sfile, "gameSettings", "chatBotTime", txtChatBotTime.Text)
 
             writeINI(sfile, "gameSettings", "showInstructions", cbShowInstructions.Checked)
             writeINI(sfile, "gameSettings", "testMode", cbTestMode.Checked)
@@ -83,6 +84,7 @@
 
             txtReadyToGoOnTime.Text = getINI(sfile, "gameSettings", "readyToGoOnTime")
             txtSurveyLink.Text = getINI(sfile, "gameSettings", "surveyLink")
+            txtChatBotTime.Text = getINI(sfile, "gameSettings", "chatBotTime")
 
             If getINI(sfile, "gameSettings", "englishBidMode") = "full" Then
                 rbFull.Checked = True

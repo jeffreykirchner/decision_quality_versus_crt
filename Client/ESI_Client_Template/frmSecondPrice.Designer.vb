@@ -126,11 +126,13 @@ Partial Class frmSecondPrice
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.gbChatGPT = New System.Windows.Forms.GroupBox()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.pnlChatBot = New System.Windows.Forms.TableLayoutPanel()
         Me.cmdSend = New System.Windows.Forms.Button()
         Me.textPrompt = New System.Windows.Forms.TextBox()
         Me.cmdReset = New System.Windows.Forms.Button()
         Me.rtbResponse = New System.Windows.Forms.RichTextBox()
+        Me.cmdDoneChatting = New System.Windows.Forms.Button()
+        Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.gbBidLeft.SuspendLayout()
         Me.gb2Left.SuspendLayout()
         CType(Me.dgMainLeft, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -142,7 +144,7 @@ Partial Class frmSecondPrice
         Me.gb2Right.SuspendLayout()
         CType(Me.dgMainRight, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbChatGPT.SuspendLayout()
-        Me.TableLayoutPanel1.SuspendLayout()
+        Me.pnlChatBot.SuspendLayout()
         Me.SuspendLayout()
         '
         'cmdSubmit
@@ -1003,48 +1005,50 @@ Partial Class frmSecondPrice
         '
         'gbChatGPT
         '
-        Me.gbChatGPT.Controls.Add(Me.TableLayoutPanel1)
+        Me.gbChatGPT.Controls.Add(Me.cmdDoneChatting)
+        Me.gbChatGPT.Controls.Add(Me.pnlChatBot)
         Me.gbChatGPT.Controls.Add(Me.rtbResponse)
         Me.gbChatGPT.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbChatGPT.Location = New System.Drawing.Point(10, 667)
         Me.gbChatGPT.Name = "gbChatGPT"
-        Me.gbChatGPT.Size = New System.Drawing.Size(1718, 282)
+        Me.gbChatGPT.Size = New System.Drawing.Size(1718, 315)
         Me.gbChatGPT.TabIndex = 65
         Me.gbChatGPT.TabStop = False
         Me.gbChatGPT.Text = "Chat Bot"
         Me.gbChatGPT.Visible = False
         '
-        'TableLayoutPanel1
+        'pnlChatBot
         '
-        Me.TableLayoutPanel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.pnlChatBot.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel1.ColumnCount = 3
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.92497!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.07503!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.cmdSend, 1, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.textPrompt, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.cmdReset, 2, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(757, 239)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 1
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(955, 37)
-        Me.TableLayoutPanel1.TabIndex = 8
+        Me.pnlChatBot.ColumnCount = 3
+        Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.55264!))
+        Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.44737!))
+        Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143.0!))
+        Me.pnlChatBot.Controls.Add(Me.cmdSend, 1, 0)
+        Me.pnlChatBot.Controls.Add(Me.textPrompt, 0, 0)
+        Me.pnlChatBot.Controls.Add(Me.cmdReset, 2, 0)
+        Me.pnlChatBot.Location = New System.Drawing.Point(757, 272)
+        Me.pnlChatBot.Name = "pnlChatBot"
+        Me.pnlChatBot.RowCount = 1
+        Me.pnlChatBot.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.pnlChatBot.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.pnlChatBot.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.pnlChatBot.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.pnlChatBot.Size = New System.Drawing.Size(955, 37)
+        Me.pnlChatBot.TabIndex = 8
+        Me.pnlChatBot.Visible = False
         '
         'cmdSend
         '
         Me.cmdSend.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdSend.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdSend.Location = New System.Drawing.Point(753, 3)
+        Me.cmdSend.Location = New System.Drawing.Point(722, 3)
         Me.cmdSend.Name = "cmdSend"
-        Me.cmdSend.Size = New System.Drawing.Size(97, 28)
+        Me.cmdSend.Size = New System.Drawing.Size(86, 28)
         Me.cmdSend.TabIndex = 0
-        Me.cmdSend.Text = "Send"
+        Me.cmdSend.Text = "Chat"
         Me.cmdSend.UseVisualStyleBackColor = True
         '
         'textPrompt
@@ -1056,7 +1060,7 @@ Partial Class frmSecondPrice
         Me.textPrompt.Location = New System.Drawing.Point(3, 3)
         Me.textPrompt.MaxLength = 200
         Me.textPrompt.Name = "textPrompt"
-        Me.textPrompt.Size = New System.Drawing.Size(744, 26)
+        Me.textPrompt.Size = New System.Drawing.Size(713, 26)
         Me.textPrompt.TabIndex = 2
         Me.textPrompt.Text = "Type your question here."
         Me.textPrompt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1064,11 +1068,11 @@ Partial Class frmSecondPrice
         'cmdReset
         '
         Me.cmdReset.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdReset.Location = New System.Drawing.Point(856, 3)
+        Me.cmdReset.Location = New System.Drawing.Point(814, 3)
         Me.cmdReset.Name = "cmdReset"
-        Me.cmdReset.Size = New System.Drawing.Size(96, 28)
+        Me.cmdReset.Size = New System.Drawing.Size(134, 28)
         Me.cmdReset.TabIndex = 5
-        Me.cmdReset.Text = "Reset"
+        Me.cmdReset.Text = "Clear History"
         Me.cmdReset.UseVisualStyleBackColor = True
         '
         'rtbResponse
@@ -1082,15 +1086,32 @@ Partial Class frmSecondPrice
         Me.rtbResponse.Name = "rtbResponse"
         Me.rtbResponse.ReadOnly = True
         Me.rtbResponse.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical
-        Me.rtbResponse.Size = New System.Drawing.Size(1700, 212)
+        Me.rtbResponse.Size = New System.Drawing.Size(1700, 245)
         Me.rtbResponse.TabIndex = 7
         Me.rtbResponse.Text = ""
+        '
+        'cmdDoneChatting
+        '
+        Me.cmdDoneChatting.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdDoneChatting.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdDoneChatting.Location = New System.Drawing.Point(12, 272)
+        Me.cmdDoneChatting.Name = "cmdDoneChatting"
+        Me.cmdDoneChatting.Size = New System.Drawing.Size(227, 38)
+        Me.cmdDoneChatting.TabIndex = 9
+        Me.cmdDoneChatting.Text = "Done Chatting"
+        Me.cmdDoneChatting.UseVisualStyleBackColor = True
+        Me.cmdDoneChatting.Visible = False
+        '
+        'Timer3
+        '
+        Me.Timer3.Interval = 1000
         '
         'frmSecondPrice
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1734, 681)
+        Me.ClientSize = New System.Drawing.Size(1734, 991)
         Me.ControlBox = False
         Me.Controls.Add(Me.gbChatGPT)
         Me.Controls.Add(Me.cmdSubmitSmallEnglish)
@@ -1125,8 +1146,8 @@ Partial Class frmSecondPrice
         Me.gb2Right.ResumeLayout(False)
         CType(Me.dgMainRight, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbChatGPT.ResumeLayout(False)
-        Me.TableLayoutPanel1.ResumeLayout(False)
-        Me.TableLayoutPanel1.PerformLayout()
+        Me.pnlChatBot.ResumeLayout(False)
+        Me.pnlChatBot.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1204,8 +1225,10 @@ Partial Class frmSecondPrice
     Friend WithEvents Timer2 As Timer
     Friend WithEvents gbChatGPT As GroupBox
     Friend WithEvents rtbResponse As RichTextBox
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents pnlChatBot As TableLayoutPanel
     Friend WithEvents cmdSend As Button
     Friend WithEvents textPrompt As TextBox
     Friend WithEvents cmdReset As Button
+    Friend WithEvents cmdDoneChatting As Button
+    Friend WithEvents Timer3 As Timer
 End Class

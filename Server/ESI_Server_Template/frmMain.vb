@@ -492,7 +492,7 @@ Public Class frmMain
 
                 Timer4.Interval = englishTickRatePV
 
-                If phaseList(1) = "English Auction" And Not showInstructions Then
+                If phaseList(1) = "English Auction" And Not showInstructions And Not enableChatBot Then
                     Timer4.Enabled = True
                 End If
 
