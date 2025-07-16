@@ -196,6 +196,8 @@ Public Class frmMain
             dgMain.RowCount = 0
             dgLottery.RowCount = 0
 
+            rtbChatBot.Clear()
+
         Catch ex As Exception
             appEventLog_Write("error :", ex)
         End Try
