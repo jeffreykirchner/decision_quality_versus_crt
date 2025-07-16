@@ -685,7 +685,7 @@ Module modMain
 
                 Else
                     .lblMyBidLeft.Text = "My Bid ($)"
-                    .lblMyBidRight.Text = "Price ($)"
+                    .lblMyBidRight.Text = "My Bid ($)"
                 End If
 
                 If showChat Then

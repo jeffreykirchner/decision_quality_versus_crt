@@ -133,6 +133,7 @@ Partial Class frmSecondPrice
         Me.cmdReset = New System.Windows.Forms.Button()
         Me.rtbResponse = New System.Windows.Forms.RichTextBox()
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
+        Me.lblPromptLength = New System.Windows.Forms.Label()
         Me.gbBidLeft.SuspendLayout()
         Me.gb2Left.SuspendLayout()
         CType(Me.dgMainLeft, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1034,21 +1035,23 @@ Partial Class frmSecondPrice
         '
         Me.pnlChatBot.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.pnlChatBot.ColumnCount = 3
-        Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.55264!))
-        Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.44737!))
-        Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144.0!))
-        Me.pnlChatBot.Controls.Add(Me.cmdSend, 1, 0)
-        Me.pnlChatBot.Controls.Add(Me.textPrompt, 0, 0)
-        Me.pnlChatBot.Controls.Add(Me.cmdReset, 2, 0)
-        Me.pnlChatBot.Location = New System.Drawing.Point(757, 272)
+        Me.pnlChatBot.ColumnCount = 4
+        Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.928572!))
+        Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 91.07143!))
+        Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108.0!))
+        Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134.0!))
+        Me.pnlChatBot.Controls.Add(Me.cmdReset, 3, 0)
+        Me.pnlChatBot.Controls.Add(Me.cmdSend, 2, 0)
+        Me.pnlChatBot.Controls.Add(Me.textPrompt, 1, 0)
+        Me.pnlChatBot.Controls.Add(Me.lblPromptLength, 0, 0)
+        Me.pnlChatBot.Location = New System.Drawing.Point(741, 272)
         Me.pnlChatBot.Name = "pnlChatBot"
         Me.pnlChatBot.RowCount = 1
         Me.pnlChatBot.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.pnlChatBot.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.pnlChatBot.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.pnlChatBot.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.pnlChatBot.Size = New System.Drawing.Size(955, 37)
+        Me.pnlChatBot.Size = New System.Drawing.Size(971, 37)
         Me.pnlChatBot.TabIndex = 8
         Me.pnlChatBot.Visible = False
         '
@@ -1057,23 +1060,22 @@ Partial Class frmSecondPrice
         Me.cmdSend.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdSend.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdSend.Location = New System.Drawing.Point(721, 3)
+        Me.cmdSend.Location = New System.Drawing.Point(731, 3)
         Me.cmdSend.Name = "cmdSend"
-        Me.cmdSend.Size = New System.Drawing.Size(86, 28)
+        Me.cmdSend.Size = New System.Drawing.Size(102, 28)
         Me.cmdSend.TabIndex = 0
         Me.cmdSend.Text = "Chat"
         Me.cmdSend.UseVisualStyleBackColor = True
         '
         'textPrompt
         '
-        Me.textPrompt.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.textPrompt.Dock = System.Windows.Forms.DockStyle.Fill
         Me.textPrompt.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.textPrompt.ForeColor = System.Drawing.Color.Black
-        Me.textPrompt.Location = New System.Drawing.Point(3, 3)
+        Me.textPrompt.Location = New System.Drawing.Point(68, 3)
         Me.textPrompt.MaxLength = 100
         Me.textPrompt.Name = "textPrompt"
-        Me.textPrompt.Size = New System.Drawing.Size(712, 26)
+        Me.textPrompt.Size = New System.Drawing.Size(657, 26)
         Me.textPrompt.TabIndex = 2
         Me.textPrompt.Text = "Type your question here."
         Me.textPrompt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1081,9 +1083,9 @@ Partial Class frmSecondPrice
         'cmdReset
         '
         Me.cmdReset.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdReset.Location = New System.Drawing.Point(813, 3)
+        Me.cmdReset.Location = New System.Drawing.Point(839, 3)
         Me.cmdReset.Name = "cmdReset"
-        Me.cmdReset.Size = New System.Drawing.Size(134, 28)
+        Me.cmdReset.Size = New System.Drawing.Size(129, 28)
         Me.cmdReset.TabIndex = 5
         Me.cmdReset.Text = "Clear History"
         Me.cmdReset.UseVisualStyleBackColor = True
@@ -1101,11 +1103,24 @@ Partial Class frmSecondPrice
         Me.rtbResponse.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical
         Me.rtbResponse.Size = New System.Drawing.Size(1700, 245)
         Me.rtbResponse.TabIndex = 7
+        Me.rtbResponse.TabStop = False
         Me.rtbResponse.Text = ""
         '
         'Timer3
         '
         Me.Timer3.Interval = 1000
+        '
+        'lblPromptLength
+        '
+        Me.lblPromptLength.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblPromptLength.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPromptLength.ForeColor = System.Drawing.Color.DimGray
+        Me.lblPromptLength.Location = New System.Drawing.Point(3, 11)
+        Me.lblPromptLength.Name = "lblPromptLength"
+        Me.lblPromptLength.Size = New System.Drawing.Size(59, 14)
+        Me.lblPromptLength.TabIndex = 6
+        Me.lblPromptLength.Text = "100/100"
+        Me.lblPromptLength.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'frmSecondPrice
         '
@@ -1231,4 +1246,5 @@ Partial Class frmSecondPrice
     Friend WithEvents cmdReset As Button
     Friend WithEvents cmdDoneChatting As Button
     Friend WithEvents Timer3 As Timer
+    Friend WithEvents lblPromptLength As Label
 End Class

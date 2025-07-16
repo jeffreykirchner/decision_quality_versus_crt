@@ -881,16 +881,14 @@ Public Class player
                 .rtbChatBot.SelectionStart = .rtbChatBot.Text.Length - display_player.Length
                 .rtbChatBot.SelectionLength = display_player.Length
                 .rtbChatBot.SelectionAlignment = HorizontalAlignment.Center
-                Dim currentFont As Font = .rtbChatBot.SelectionFont
-                If currentFont IsNot Nothing Then
-                    .rtbChatBot.SelectionFont = New Font(currentFont, FontStyle.Italic)
-                End If
+                .rtbChatBot.SelectionFont = New Font("Arial", 10, FontStyle.Italic)
                 .rtbChatBot.AppendText(vbCrLf)
 
                 .rtbChatBot.AppendText(display_prompt)
                 .rtbChatBot.SelectionStart = .rtbChatBot.Text.Length - display_prompt.Length
                 .rtbChatBot.SelectionLength = display_prompt.Length
                 .rtbChatBot.SelectionAlignment = HorizontalAlignment.Right
+                .rtbChatBot.SelectionFont = New Font("Arial", 12, FontStyle.Italic)
                 .rtbChatBot.AppendText(vbCrLf & vbCrLf)
 
                 'add response to chat bot box
@@ -898,6 +896,7 @@ Public Class player
                 .rtbChatBot.SelectionStart = .rtbChatBot.Text.Length - display_response.Length
                 .rtbChatBot.SelectionLength = display_response.Length
                 .rtbChatBot.SelectionAlignment = HorizontalAlignment.Left
+                .rtbChatBot.SelectionFont = New Font("Arial", 12, FontStyle.Regular)
                 .rtbChatBot.ScrollToCaret()
                 .rtbChatBot.AppendText(vbCrLf & vbCrLf)
 
