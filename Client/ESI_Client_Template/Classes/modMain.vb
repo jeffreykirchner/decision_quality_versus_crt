@@ -1452,16 +1452,14 @@ Module modMain
                     'frmChatGPT.Width = My.Forms.frmSecondPrice.Width
                     'frmChatGPT.Height = My.Computer.Screen.Bounds.Height - 20 - My.Forms.frmSecondPrice.Height
 
-                    If enableChatBot Then
-                        frmSecondPrice.gbChatGPT.Visible = True
-                        frmSecondPrice.Height = 1030
-                    Else
-                        frmSecondPrice.gbChatGPT.Visible = False
-                        frmSecondPrice.Height = 720
-                    End If
-
-                    frmSecondPrice.Location = New Point(windowX, windowY)
+                    frmSecondPrice.gbChatGPT.Visible = True
+                    frmSecondPrice.Height = 1030
+                Else
+                    frmSecondPrice.gbChatGPT.Visible = False
+                    frmSecondPrice.Height = 720
                 End If
+
+                frmSecondPrice.Location = New Point(windowX, windowY)
             Else
                 takeEnglishStart(msgtokens, nextToken)
 
