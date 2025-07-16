@@ -128,12 +128,13 @@ Partial Class frmSecondPrice
         Me.gbChatGPT = New System.Windows.Forms.GroupBox()
         Me.cmdDoneChatting = New System.Windows.Forms.Button()
         Me.pnlChatBot = New System.Windows.Forms.TableLayoutPanel()
+        Me.cmdReset = New System.Windows.Forms.Button()
         Me.cmdSend = New System.Windows.Forms.Button()
         Me.textPrompt = New System.Windows.Forms.TextBox()
-        Me.cmdReset = New System.Windows.Forms.Button()
+        Me.lblPromptLength = New System.Windows.Forms.Label()
         Me.rtbResponse = New System.Windows.Forms.RichTextBox()
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
-        Me.lblPromptLength = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.gbBidLeft.SuspendLayout()
         Me.gb2Left.SuspendLayout()
         CType(Me.dgMainLeft, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1009,6 +1010,7 @@ Partial Class frmSecondPrice
         Me.gbChatGPT.Controls.Add(Me.cmdDoneChatting)
         Me.gbChatGPT.Controls.Add(Me.pnlChatBot)
         Me.gbChatGPT.Controls.Add(Me.rtbResponse)
+        Me.gbChatGPT.Controls.Add(Me.Label2)
         Me.gbChatGPT.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbChatGPT.Location = New System.Drawing.Point(10, 667)
         Me.gbChatGPT.Name = "gbChatGPT"
@@ -1025,7 +1027,7 @@ Partial Class frmSecondPrice
         Me.cmdDoneChatting.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdDoneChatting.Location = New System.Drawing.Point(12, 272)
         Me.cmdDoneChatting.Name = "cmdDoneChatting"
-        Me.cmdDoneChatting.Size = New System.Drawing.Size(227, 38)
+        Me.cmdDoneChatting.Size = New System.Drawing.Size(239, 38)
         Me.cmdDoneChatting.TabIndex = 9
         Me.cmdDoneChatting.Text = "Done Chatting"
         Me.cmdDoneChatting.UseVisualStyleBackColor = True
@@ -1039,7 +1041,7 @@ Partial Class frmSecondPrice
         Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.928572!))
         Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 91.07143!))
         Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108.0!))
-        Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134.0!))
+        Me.pnlChatBot.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135.0!))
         Me.pnlChatBot.Controls.Add(Me.cmdReset, 3, 0)
         Me.pnlChatBot.Controls.Add(Me.cmdSend, 2, 0)
         Me.pnlChatBot.Controls.Add(Me.textPrompt, 1, 0)
@@ -1054,6 +1056,16 @@ Partial Class frmSecondPrice
         Me.pnlChatBot.Size = New System.Drawing.Size(971, 37)
         Me.pnlChatBot.TabIndex = 8
         Me.pnlChatBot.Visible = False
+        '
+        'cmdReset
+        '
+        Me.cmdReset.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdReset.Location = New System.Drawing.Point(839, 3)
+        Me.cmdReset.Name = "cmdReset"
+        Me.cmdReset.Size = New System.Drawing.Size(129, 28)
+        Me.cmdReset.TabIndex = 5
+        Me.cmdReset.Text = "Clear History"
+        Me.cmdReset.UseVisualStyleBackColor = True
         '
         'cmdSend
         '
@@ -1080,36 +1092,6 @@ Partial Class frmSecondPrice
         Me.textPrompt.Text = "Type your question here."
         Me.textPrompt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'cmdReset
-        '
-        Me.cmdReset.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdReset.Location = New System.Drawing.Point(839, 3)
-        Me.cmdReset.Name = "cmdReset"
-        Me.cmdReset.Size = New System.Drawing.Size(129, 28)
-        Me.cmdReset.TabIndex = 5
-        Me.cmdReset.Text = "Clear History"
-        Me.cmdReset.UseVisualStyleBackColor = True
-        '
-        'rtbResponse
-        '
-        Me.rtbResponse.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.rtbResponse.BackColor = System.Drawing.Color.White
-        Me.rtbResponse.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rtbResponse.Location = New System.Drawing.Point(12, 21)
-        Me.rtbResponse.Name = "rtbResponse"
-        Me.rtbResponse.ReadOnly = True
-        Me.rtbResponse.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical
-        Me.rtbResponse.Size = New System.Drawing.Size(1700, 245)
-        Me.rtbResponse.TabIndex = 7
-        Me.rtbResponse.TabStop = False
-        Me.rtbResponse.Text = ""
-        '
-        'Timer3
-        '
-        Me.Timer3.Interval = 1000
-        '
         'lblPromptLength
         '
         Me.lblPromptLength.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -1121,6 +1103,38 @@ Partial Class frmSecondPrice
         Me.lblPromptLength.TabIndex = 6
         Me.lblPromptLength.Text = "100/100"
         Me.lblPromptLength.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'rtbResponse
+        '
+        Me.rtbResponse.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.rtbResponse.BackColor = System.Drawing.Color.White
+        Me.rtbResponse.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rtbResponse.Location = New System.Drawing.Point(12, 30)
+        Me.rtbResponse.Name = "rtbResponse"
+        Me.rtbResponse.ReadOnly = True
+        Me.rtbResponse.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical
+        Me.rtbResponse.Size = New System.Drawing.Size(1700, 236)
+        Me.rtbResponse.TabIndex = 7
+        Me.rtbResponse.TabStop = False
+        Me.rtbResponse.Text = ""
+        '
+        'Timer3
+        '
+        Me.Timer3.Interval = 1000
+        '
+        'Label2
+        '
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Location = New System.Drawing.Point(55, 11)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(1657, 16)
+        Me.Label2.TabIndex = 10
+        Me.Label2.Text = "Hi, I am a chat bot and here to help you. Ask me anything, however keep in mind t" &
+    "hat I cannot see your screen. This means you will have to explain what you see b" &
+    "efore asking me a question about it."
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'frmSecondPrice
         '
@@ -1247,4 +1261,5 @@ Partial Class frmSecondPrice
     Friend WithEvents cmdDoneChatting As Button
     Friend WithEvents Timer3 As Timer
     Friend WithEvents lblPromptLength As Label
+    Friend WithEvents Label2 As Label
 End Class

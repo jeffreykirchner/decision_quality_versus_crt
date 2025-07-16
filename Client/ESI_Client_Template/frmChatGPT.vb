@@ -119,16 +119,15 @@ Public Class frmChatGPT
             textPrompt.Clear()
             textPrompt.Focus()
 
-            rtbResponse.Text = "Hi, I am a chat bot and here to help you. Ask me anything, however keep in mind that I cannot see your screen. This means you will have to explain what you see before asking me a question about it."
-            rtbResponse.SelectionStart = 0
-            rtbResponse.SelectionLength = rtbResponse.Text.Length
-            rtbResponse.SelectionAlignment = HorizontalAlignment.Center
+            'rtbResponse.Text = "Hi, I am a chat bot and here to help you. Ask me anything, however keep in mind that I cannot see your screen. This means you will have to explain what you see before asking me a question about it."
+            'rtbResponse.SelectionStart = 0
+            'rtbResponse.SelectionLength = rtbResponse.Text.Length
+            'rtbResponse.SelectionAlignment = HorizontalAlignment.Center
 
-            rtbResponse.AppendText(vbCrLf & vbCrLf)
+            'rtbResponse.AppendText(vbCrLf & vbCrLf)
 
             messages = New List(Of ChatMessage) From {
-                New SystemChatMessage("You are a helpful AI assistant that answers questions concisely."),
-                New SystemChatMessage("Reply only with ASCII printable characters.")
+                New SystemChatMessage("You are a helpful AI assistant that answers questions concisely.")
             }
             cmdSend.Enabled = True
         Catch ex As Exception

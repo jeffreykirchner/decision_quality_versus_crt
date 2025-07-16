@@ -34,7 +34,8 @@ Public Class socketPlayer
 
                 Dim bytesRec As Integer = socketHandler.Receive(bytes)
 
-                data &= Encoding.ASCII.GetString(bytes, 0, bytesRec)
+                'data &= Encoding.ASCII.GetString(bytes, 0, bytesRec)
+                data &= Encoding.UTF8.GetString(bytes, 0, bytesRec)
 
                 If data.IndexOf("<EOF>") > -1 Then
 
@@ -56,7 +57,8 @@ Public Class socketPlayer
 
     Public Sub send(id As String, str As String)
         Try
-            Dim msg As Byte() = Encoding.ASCII.GetBytes(id & "<SEP>" & str & "<EOF>")
+            'Dim msg As Byte() = Encoding.ASCII.GetBytes(id & "<SEP>" & str & "<EOF>")
+            Dim msg As Byte() = Encoding.UTF8.GetBytes(id & "<SEP>" & str & "<EOF>")
 
             'Dim msg As Byte() = Encoding.ASCII.GetBytes(id & "<SEP>" & str & "<EOF>" & id & "<SEP>" & str & "<EOF>" & id & "<SEP>" & str & "<EOF>")  'test code
 

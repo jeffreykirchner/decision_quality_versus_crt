@@ -671,6 +671,7 @@ Public Class frmSecondPrice
             rtbResponse.SelectionAlignment = HorizontalAlignment.Right
             rtbResponse.SelectionFont = New Font("Arial", 12, FontStyle.Italic)
             rtbResponse.AppendText(vbCrLf & vbCrLf)
+            rtbResponse.ScrollToCaret()
 
             rtbResponse.Refresh()
 
@@ -700,9 +701,10 @@ Public Class frmSecondPrice
 
             rtbResponse.SelectionAlignment = HorizontalAlignment.Left
             rtbResponse.SelectionFont = New Font("Arial", 12, FontStyle.Regular)
-            rtbResponse.ScrollToCaret()
 
             rtbResponse.AppendText(vbCrLf & vbCrLf)
+
+
 
             'send the reponse to the server.
             Dim str As String = ""
@@ -748,12 +750,12 @@ Public Class frmSecondPrice
             textPrompt.Clear()
             textPrompt.Focus()
 
-            rtbResponse.Text = "Hi, I am a chat bot and here to help you. Ask me anything, however keep in mind that I cannot see your screen. This means you will have to explain what you see before asking me a question about it."
-            rtbResponse.SelectionStart = 0
-            rtbResponse.SelectionLength = rtbResponse.Text.Length
-            rtbResponse.SelectionAlignment = HorizontalAlignment.Center
+            'rtbResponse.Text = "Hi, I am a chat bot and here to help you. Ask me anything, however keep in mind that I cannot see your screen. This means you will have to explain what you see before asking me a question about it."
+            'rtbResponse.SelectionStart = 0
+            'rtbResponse.SelectionLength = rtbResponse.Text.Length
+            'rtbResponse.SelectionAlignment = HorizontalAlignment.Center
 
-            rtbResponse.AppendText(vbCrLf & vbCrLf)
+            'rtbResponse.AppendText(vbCrLf & vbCrLf)
 
             messages = New List(Of ChatMessage) From {
                 New SystemChatMessage("You are a helpful AI assistant that answers questions concisely.")
