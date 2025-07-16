@@ -704,7 +704,7 @@ Public Class frmSecondPrice
             'send the reponse to the server.
             Dim str As String = ""
             str = textPrompt.Text & "|"
-            str &= content.Replace("'", "`") & "|"
+            str &= content & "|"
 
             frmClient.AC.sendMessage("07", str)
 

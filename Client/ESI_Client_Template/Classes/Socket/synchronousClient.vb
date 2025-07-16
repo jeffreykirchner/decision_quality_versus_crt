@@ -76,7 +76,8 @@ Public Class synchronousClient
             ' Begin receiving the data from the remote device.
             Dim bytesRec As Integer = client.Receive(bytes)
 
-            data &= Encoding.ASCII.GetString(bytes, 0, bytesRec)
+            'data &= Encoding.ASCII.GetString(bytes, 0, bytesRec)
+            data &= Encoding.UTF8.GetString(bytes, 0, bytesRec)
 
             If data.IndexOf("<EOF>") > -1 Then
 
@@ -100,7 +101,11 @@ Public Class synchronousClient
     Private Sub Send(id As String, ByVal str As String)
         Try
             ' Convert the string data to byte data using ASCII encoding.
-            Dim msg As Byte() = Encoding.ASCII.GetBytes(id & "<SEP>" & str & "<EOF>")
+            'Dim msg As Byte() = Encoding.ASCII.GetBytes(id & "<SEP>" & str & "<EOF>")
+
+            'convert str to byte array
+            Dim msg As Byte() = Encoding.UTF8.GetBytes(id & "<SEP>" & str & "<EOF>")
+
 
             ' Begin sending the data to the remote device.
             client.Send(msg)
