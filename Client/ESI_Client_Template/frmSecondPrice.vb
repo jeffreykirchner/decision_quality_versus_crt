@@ -626,13 +626,15 @@ Public Class frmSecondPrice
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Try
-            If cmdSubmit.Text = "Ready to Go On" Then
+            If cmdSubmit.Text = "Ready to Go On" Or cmdSubmit.Enabled Then
 
                 If cmdSubmit.BackColor = Color.FromArgb(192, 255, 192) Then
                     cmdSubmit.BackColor = SystemColors.ButtonFace
                 Else
                     cmdSubmit.BackColor = Color.FromArgb(192, 255, 192)
                 End If
+            Else
+                cmdSubmit.BackColor = SystemColors.ButtonFace
             End If
 
             If cmdDoneChatting.BackColor = Color.FromArgb(192, 255, 192) Then

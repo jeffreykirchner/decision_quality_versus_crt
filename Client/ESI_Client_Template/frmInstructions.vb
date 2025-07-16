@@ -83,11 +83,10 @@
                 exp2 = 5
                 exp3 = 6
 
+                numberOfPages = 16
+
                 If enableChatBot Then
-                    numberOfPages = 16
                     exp4 = 15
-                Else
-                    numberOfPages = 15
                 End If
 
                 eqp1 = 10
@@ -183,6 +182,8 @@
             End If
 
             Dim maxPages As Integer = 0
+            Dim tempCurrentInstruction = currentInstruction
+            Dim tempNumberOfPages = numberOfPages
 
             If currentPhase = "Lottery" And subPeriod = 1 Then
                 variablesLottery()
@@ -197,10 +198,16 @@
                 Else
                     variablesCVEnglish()
                 End If
-
             End If
 
-            Text = "Instructions, Page " & currentInstruction & "/" & numberOfPages
+            If Not enableChatBot Then
+                tempNumberOfPages = numberOfPages - 1
+                If currentInstruction > tempNumberOfPages Then
+                    tempCurrentInstruction = tempNumberOfPages
+                End If
+            End If
+
+            Text = "Instructions, Page " & tempCurrentInstruction & "/" & tempNumberOfPages
 
             RichTextBox1.SelectionStart = 1
             RichTextBox1.ScrollToCaret()
@@ -219,6 +226,14 @@
             If currentInstruction = numberOfPages Then Exit Sub
 
             currentInstruction += 1
+
+            If currentPhase = "2nd Price" And subPeriod = 1 And currentInstruction = 15 And Not enableChatBot Then
+                currentInstruction = 16
+            End If
+
+            If currentPhase = "English Auction" And currentInstruction = 15 And Not enableChatBot Then
+                currentInstruction = 16
+            End If
 
             If currentInstruction = numberOfPages And Not startPressed Then
                 cmdStart.Visible = True
@@ -272,6 +287,14 @@
             If currentInstruction = 1 Then Exit Sub
 
             currentInstruction -= 1
+
+            If currentPhase = "2nd Price" And subPeriod = 1 And currentInstruction = 15 And Not enableChatBot Then
+                currentInstruction = 14
+            End If
+
+            If currentPhase = "English Auction" And currentInstruction = 15 And Not enableChatBot Then
+                currentInstruction = 14
+            End If
 
             If currentInstruction = 1 Then cmdBack.Visible = False
 
