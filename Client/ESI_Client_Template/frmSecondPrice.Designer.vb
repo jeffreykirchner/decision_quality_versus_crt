@@ -133,8 +133,8 @@ Partial Class frmSecondPrice
         Me.textPrompt = New System.Windows.Forms.TextBox()
         Me.lblPromptLength = New System.Windows.Forms.Label()
         Me.rtbResponse = New System.Windows.Forms.RichTextBox()
-        Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.gbBidLeft.SuspendLayout()
         Me.gb2Left.SuspendLayout()
         CType(Me.dgMainLeft, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1120,10 +1120,6 @@ Partial Class frmSecondPrice
         Me.rtbResponse.TabStop = False
         Me.rtbResponse.Text = ""
         '
-        'Timer3
-        '
-        Me.Timer3.Interval = 1000
-        '
         'Label2
         '
         Me.Label2.BackColor = System.Drawing.Color.Transparent
@@ -1135,6 +1131,10 @@ Partial Class frmSecondPrice
     "hat I cannot see your screen. This means you will have to explain what you see b" &
     "efore asking me a question about it."
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Timer3
+        '
+        Me.Timer3.Interval = 1000
         '
         'frmSecondPrice
         '
