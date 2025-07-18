@@ -660,6 +660,11 @@ Public Class frmSecondPrice
 
     Private Async Sub cmdSend_Click(sender As Object, e As EventArgs) Handles cmdSend.Click
         Try
+
+            If textPrompt.Text.Trim() = "" Then
+                Exit Sub
+            End If
+
             cmdSend.Enabled = False
             cmdReset.Enabled = False
             textPrompt.Enabled = False
