@@ -693,18 +693,23 @@ Module modMain
                     If myGroup <> -1 Then
 
                         If Not showInstructions Then
-                            .cmdDoneChatting.Visible = True
+                            .lblChatTimeRemaining.Visible = True
                             .chatTimeRemaining = chatBotTime
+                            .lblChatTimeRemaining.Text = "Chat Time Remaining: " & .chatTimeRemaining
                             .Timer3.Enabled = True
+                            .textPrompt.Enabled = True
+                            .cmdSend.Enabled = True
+                            .cmdSend.Text = "Chat"
+                            .cmdReset.Enabled = True
                         End If
 
                         .updateRightProfit()
-                            .updateLeftProfit()
-                            .cmdSubmitLargeEnglish.Enabled = False
-                            .cmdSubmitSmallEnglish.Enabled = False
-                            .cmdSubmit.Enabled = False
-                        End If
+                        .updateLeftProfit()
+                        .cmdSubmitLargeEnglish.Enabled = False
+                        .cmdSubmitSmallEnglish.Enabled = False
+                        .cmdSubmit.Enabled = False
                     End If
+                End If
 
                 'show profit
                 If englishPVSecondPriceShowProfit Then
@@ -732,7 +737,7 @@ Module modMain
         Try
             With frmSecondPrice
                 .pnlChatBot.Visible = False
-                .cmdDoneChatting.Visible = False
+                .lblChatTimeRemaining.Visible = False
                 .Timer3.Enabled = False
                 .updateRightProfit()
                 .updateLeftProfit()

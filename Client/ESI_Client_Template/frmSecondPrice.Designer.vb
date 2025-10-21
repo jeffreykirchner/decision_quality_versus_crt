@@ -126,7 +126,6 @@ Partial Class frmSecondPrice
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.gbChatGPT = New System.Windows.Forms.GroupBox()
-        Me.cmdDoneChatting = New System.Windows.Forms.Button()
         Me.pnlChatBot = New System.Windows.Forms.TableLayoutPanel()
         Me.cmdReset = New System.Windows.Forms.Button()
         Me.cmdSend = New System.Windows.Forms.Button()
@@ -135,6 +134,7 @@ Partial Class frmSecondPrice
         Me.rtbResponse = New System.Windows.Forms.RichTextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
+        Me.lblChatTimeRemaining = New System.Windows.Forms.Label()
         Me.gbBidLeft.SuspendLayout()
         Me.gb2Left.SuspendLayout()
         CType(Me.dgMainLeft, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1007,7 +1007,7 @@ Partial Class frmSecondPrice
         '
         'gbChatGPT
         '
-        Me.gbChatGPT.Controls.Add(Me.cmdDoneChatting)
+        Me.gbChatGPT.Controls.Add(Me.lblChatTimeRemaining)
         Me.gbChatGPT.Controls.Add(Me.pnlChatBot)
         Me.gbChatGPT.Controls.Add(Me.rtbResponse)
         Me.gbChatGPT.Controls.Add(Me.Label2)
@@ -1019,19 +1019,6 @@ Partial Class frmSecondPrice
         Me.gbChatGPT.TabStop = False
         Me.gbChatGPT.Text = "Chat Bot"
         Me.gbChatGPT.Visible = False
-        '
-        'cmdDoneChatting
-        '
-        Me.cmdDoneChatting.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdDoneChatting.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdDoneChatting.Location = New System.Drawing.Point(12, 272)
-        Me.cmdDoneChatting.Name = "cmdDoneChatting"
-        Me.cmdDoneChatting.Size = New System.Drawing.Size(239, 38)
-        Me.cmdDoneChatting.TabIndex = 9
-        Me.cmdDoneChatting.Text = "Done Chatting"
-        Me.cmdDoneChatting.UseVisualStyleBackColor = True
-        Me.cmdDoneChatting.Visible = False
         '
         'pnlChatBot
         '
@@ -1135,6 +1122,16 @@ Partial Class frmSecondPrice
         'Timer3
         '
         Me.Timer3.Interval = 1000
+        '
+        'lblChatTimeRemaining
+        '
+        Me.lblChatTimeRemaining.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblChatTimeRemaining.Location = New System.Drawing.Point(10, 276)
+        Me.lblChatTimeRemaining.Name = "lblChatTimeRemaining"
+        Me.lblChatTimeRemaining.Size = New System.Drawing.Size(276, 29)
+        Me.lblChatTimeRemaining.TabIndex = 11
+        Me.lblChatTimeRemaining.Text = "Chat Time Remaining: ---"
+        Me.lblChatTimeRemaining.Visible = False
         '
         'frmSecondPrice
         '
@@ -1258,8 +1255,8 @@ Partial Class frmSecondPrice
     Friend WithEvents cmdSend As Button
     Friend WithEvents textPrompt As TextBox
     Friend WithEvents cmdReset As Button
-    Friend WithEvents cmdDoneChatting As Button
     Friend WithEvents Timer3 As Timer
     Friend WithEvents lblPromptLength As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents lblChatTimeRemaining As Label
 End Class

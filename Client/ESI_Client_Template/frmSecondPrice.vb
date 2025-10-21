@@ -637,11 +637,6 @@ Public Class frmSecondPrice
                 cmdSubmit.BackColor = SystemColors.ButtonFace
             End If
 
-            If cmdDoneChatting.BackColor = Color.FromArgb(192, 255, 192) Then
-                cmdDoneChatting.BackColor = SystemColors.ButtonFace
-            Else
-                cmdDoneChatting.BackColor = Color.FromArgb(192, 255, 192)
-            End If
         Catch ex As Exception
             appEventLog_Write("error :", ex)
         End Try
@@ -660,6 +655,11 @@ Public Class frmSecondPrice
 
     Private Async Sub cmdSend_Click(sender As Object, e As EventArgs) Handles cmdSend.Click
         Try
+            'check for empty submission 
+            If textPrompt.Text.Trim() = "" Then
+                Exit Sub
+            End If
+
             cmdSend.Enabled = False
             cmdReset.Enabled = False
             textPrompt.Enabled = False
@@ -730,6 +730,14 @@ Public Class frmSecondPrice
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message)
+
+            textPrompt.Clear()
+            textPrompt.Enabled = True
+            textPrompt.Focus()
+            cmdSend.Enabled = True
+            cmdSend.Text = "Chat"
+
+            cmdReset.Enabled = True
         End Try
 
         'MessageBox.Show(reply)
@@ -793,30 +801,42 @@ Public Class frmSecondPrice
         End Try
     End Sub
 
-    Private Sub cmdDoneChatting_Click(sender As Object, e As EventArgs) Handles cmdDoneChatting.Click
+    Private Sub cmdDoneChatting_Click(sender As Object, e As EventArgs)
         Try
-            If Not cmdDoneChatting.Visible Then Exit Sub
+            'If Not cmdChatTimeRemaining.Visible Then Exit Sub
 
-            pnlChatBot.Visible = False
-            cmdDoneChatting.Visible = False
-            'lblInfoLeft.Text = "Waiting for others."
+            'pnlChatBot.Visible = False
+            'cmdChatTimeRemaining.Visible = False
+            ''lblInfoLeft.Text = "Waiting for others."
 
-            Dim str As String = ""
+            'Dim str As String = ""
 
-            frmClient.AC.sendMessage("08", str)
+            'frmClient.AC.sendMessage("08", str)
         Catch ex As Exception
             appEventLog_Write("error :", ex)
         End Try
+    End Sub
+
+    Public Sub doneChattingAction()
+
+        If lblChatTimeRemaining.Visible = False Then Exit Sub
+
+        pnlChatBot.Visible = False
+        lblChatTimeRemaining.Visible = False
+
+        Dim str As String = ""
+
+        frmClient.AC.sendMessage("08", str)
     End Sub
 
     Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
         Try
             If chatTimeRemaining > 0 Then
                 chatTimeRemaining -= 1
-                cmdDoneChatting.Text = "Done Chatting (" & chatTimeRemaining & ")"
+                lblChatTimeRemaining.Text = "Chat Time Remaining: " & chatTimeRemaining
             Else
                 Timer3.Enabled = False
-                cmdDoneChatting.PerformClick()
+                doneChattingAction()
             End If
         Catch ex As Exception
             appEventLog_Write("error :", ex)

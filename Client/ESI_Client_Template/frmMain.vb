@@ -314,26 +314,23 @@
 
                             .cmdSubmit.PerformClick()
 
-                        ElseIf .pnlChatBot.Visible And .cmdDoneChatting.Visible Then
+                        ElseIf .pnlChatBot.Visible And .lblChatTimeRemaining.Visible Then
                             'chat bot
                             If rand(5, 1) = 1 And .cmdSend.Text <> "Working..." Then
                                 .textPrompt.Text = "Hello!"
                                 .cmdSend.PerformClick()
-                            ElseIf rand(30, 1) = 1 And .cmdDoneChatting.Visible Then
-                                .cmdDoneChatting.PerformClick()
+
                             End If
                         End If
                     Else
                         If .cmdSubmit.Visible And .cmdSubmit.Enabled Then
                             'ready to go on
                             .cmdSubmit.PerformClick()
-                        ElseIf .pnlChatBot.Visible And .cmdDoneChatting.Visible Then
+                        ElseIf .pnlChatBot.Visible And .lblChatTimeRemaining.Visible Then
                             'chat bot
                             If rand(5, 1) = 1 And .cmdSend.Text <> "Working..." Then
                                 .textPrompt.Text = "Hello!"
                                 .cmdSend.PerformClick()
-                            ElseIf rand(30, 1) = 1 And .cmdDoneChatting.Visible Then
-                                .cmdDoneChatting.PerformClick()
                             End If
                         Else
                             'submit bid
