@@ -655,7 +655,7 @@ Public Class frmSecondPrice
 
     Private Async Sub cmdSend_Click(sender As Object, e As EventArgs) Handles cmdSend.Click
         Try
-            'check for empty submission 
+
             If textPrompt.Text.Trim() = "" Then
                 Exit Sub
             End If
